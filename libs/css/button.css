@@ -1,0 +1,25 @@
+a span.icon_head {
+	width: 22px;
+	height: 22px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent: -900em;
+	color: #333;
+	text-decoration: none;
+	line-height: 100%;
+	white-space: nowrap;
+	display: inline-block;
+	position: relative;
+	vertical-align: central;
+	margin: 0;
+	top:-5px;
+	
+}
+
+a span.icon_head.back {
+	background-image:url(../img/icon_back.png);
+}
+
+a span.icon_head.full {
+	background-image:url(../img/icon_full.png);
+}

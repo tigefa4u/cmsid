@@ -1,0 +1,156 @@
+div.widgets-holder-wrap {
+	padding: 0;
+	margin:0;
+}
+
+div.widgets-sortables, #widgets-left .inactive, #available-widgets .widget-holder {
+	padding: 0;
+	margin:0;
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:5px;
+}
+#available-widgets .widget-holder {
+	padding: 7px 5px 0;
+}
+div.sidebar-name {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 2px;
+}
+#available-widgets .widget-holder {
+	padding: 7px 5px 0;
+}
+.sidebar-name-arrow {
+	float: right;
+	height: 29px;
+	width: 26px;
+	background:#f8f8f8;
+	border-bottom:1px solid #f8f8f8;
+	/*position:relative;*/
+}
+div.sidebar-name h3 {
+	font-weight: normal;
+	margin: 0;
+	padding: 8px;
+	overflow: hidden;
+	white-space: nowrap;
+	font-family:"LGB";
+	background:#f8f8f8;
+}
+#removing-widget {
+	display: none;
+	font-weight: normal;
+	padding-left: 15px;
+	line-height: 1;
+}
+#available-widgets p.description {
+	margin: 0 12px 12px;
+}
+
+.widgets-sortables {
+	min-height: 10px;
+}
+.widget, .postbox, .stuffbox {
+	margin-bottom: 10px;
+	padding: 0;
+	border: 1px solid #ddd;
+	line-height: 1;
+	
+	-webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.widget .widget-top {
+	margin-bottom: -1px;
+	height: 30px;
+	overflow: hidden;
+}
+.widget .widget-top, .postbox h3, .stuffbox h3 {
+	margin-top: 1px;
+	border-bottom: 1px solid #ddd;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	
+	
+		
+	background: #f7f7f7; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f8f8f8 0%, #eaeaea 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f8f8f8 0%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f8f8f8 0%,#eaeaea 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f8f8f8 0%,#eaeaea 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f8f8f8 0%,#eaeaea 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+}
+.widget-top .widget-title {
+	padding: 8px 9px;
+}
+.widget-title h4 {
+	margin: 0;
+	padding-bottom: .2em;
+	line-height: 1;
+	overflow: hidden;
+	white-space: nowrap;
+	font-family:"LGB";
+	text-decoration:none;
+}
+.widget-title .in-widget-title {
+	white-space: nowrap;
+}
+.widget .widget-inside, .widget .widget-description {
+line-height: 16px;
+}
+.widget .widget-inside, .widget .widget-description {
+	padding: 12px 12px 10px;
+	line-height: 16px;
+	background:#f6f6f6;
+	border-top:1px solid rgb(219, 219, 219);
+}
+.widgets-sortables {
+	padding: 5px 3px 0;
+}
+
+.widget-control-actions {
+	margin-top: 8px;
+}
+.widget-control-actions .alignleft {
+	float: left;
+}
+.widget-control-actions .alignright {
+	float: right;
+}
+
+
+.widget-top .widget-title-action {
+	float: right;
+}
+
+.js .widget .widget-top, .js .postbox h3 {
+	cursor: move;
+}
+
+.widget-top a {
+	text-decoration:none;
+	color:#000;
+}
+.widget-top a.widget-action {
+	background: transparent url(../img/arrows.png) no-repeat 4px 6px;
+}
+
+.widget-top a.widget-action.open {
+	background-position:4px -30px;
+}
+
+a.widget-action {
+	display: block;
+	width: 24px;
+	height: 26px;
+}
+
+#widget-list .widget-inside{
+	display:none;
+}
+
+.widget-list .widget-inside{
+}

@@ -1,0 +1,33 @@
+#list-comment{
+	/*overflow		:auto;	*/
+	min-height		:200px;
+}
+.mash-div{	
+	background		:url(mash-div.png) repeat-x;
+	height			:20px;
+	width			:761px;
+	position		:absolute;
+	border-top		:1px solid #d2d2d2;
+}
+.comment{
+	padding			:2px;
+	padding-bottom	:7px;
+}
+.comment .name{
+	font-weight		:700;
+}
+.comment .date{
+	font-weight		:normal;
+	font-size		:9px;
+}
+.comment .comment-text{
+	margin-left		:60px;
+}
+.avatar{
+	float			:left;
+	margin-top		:2px;
+	margin-right	:10px;
+}
+div.comment div.row-actions {
+	margin-left		:60px;	
+}

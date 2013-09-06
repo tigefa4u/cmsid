@@ -1,0 +1,107 @@
+form{
+	text-align:left;
+}
+form  label {
+    display:block;
+}
+
+form  .required {
+    font-weight:bold;
+    color:#F00;
+}
+form  textarea {
+    resize: none;
+}
+form  input,
+form  select,
+form  textarea,
+form  label {
+    margin-bottom:2px;
+}
+
+form  input,
+form  select,
+form  textarea {
+	height:20px;
+    background: #fff;
+    padding: 2px;
+    margin: 0 0 5px 0;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 1px #f0f0f0 inset, 0 1px 0 #fff;
+    -moz-box-shadow: 0 1px 1px #f0f0f0 inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #f0f0f0 inset, 0 1px 0 #fff;
+
+}
+
+form  input:focus,
+form  select:focus,
+form  textarea:focus {
+    border: 1px solid #ddd;
+    background-color: #fcfcfc;
+}
+
+/* Remove box shadow firefox, chrome and opera put around required fields. It looks rubbish. */
+input:required, textarea:required {
+}
+
+/* Normalize placeholder styles */
+
+/* chrome, safari */
+::-webkit-input-placeholder {
+    color:#ccc;
+    font-style:normal;
+}
+
+/* mozilla */
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color:#ccc;
+    font-style:normal;
+}
+
+/* ie (faux placeholder) */
+input.placeholder-text, textarea.placeholder-text  {
+    color:#ccc;
+    font-style:normal;
+}
+form input[type="checkbox"]{
+	float:left;
+	margin-top:-1px;
+}
+form input[type="submit"], form input[type="reset"],form input[type="submit"] .button, form input[type="reset"] .button{
+	font-size:11px;
+	font-weight:bold;
+	line-height:27px;
+	height:28px;
+}
+form input[type="submit"],form input[type="reset"]{
+	cursor:pointer;
+	text-decoration:none;
+	text-shadow:0 1px 0 #fff;
+	color:#444;
+	line-height:17px;
+	display:inline-block;
+	background:#F3F3F3;
+	border:solid 1px #D9D9D9;
+	border-radius:2px;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-transition:border-color .20s;
+	-moz-transition:border-color .20s;
+	-o-transition:border-color .20s;
+	transition:border-color .20s;
+	padding:5px 6px 4px;
+}
+
+form input[type="submit"]:hover,form input[type="submit"]:focus,form input[type="reset"]:hover,form input[type="reset"]:focus {  
+}
+
+form input[type="submit"]:active,form input[type="reset"]:active {
+	color:#ddd;
+	-moz-box-shadow:inset 0 0 10px #D4D4D4;
+	-webkit-box-shadow:inset 0 0 10px #D4D4D4;
+	box-shadow:inset 0 0 10px #D4D4D4;
+	border-color:#ddd
+}
+
+form input[type="submit"]::-moz-focus-inner,form input[type="reset"]::-moz-focus-inner {
+}

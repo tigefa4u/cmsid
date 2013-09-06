@@ -1,0 +1,57 @@
+div.div_info{
+	background:#b4efab url(../images/ico/success.png) no-repeat;
+	background-position:10px 50%;
+	border:1px solid #8be57e;
+	border-left:0;
+	border-right:0;
+	color:#337129;
+	text-align:left;
+	margin:5px auto;
+	padding:7px 5px 7px 30px;
+}
+div.div_alert{
+	background:#feb1b1 url(../images/ico/alert.png) no-repeat;
+	background-position:10px 50%;
+	border:1px solid #fe9090;
+	border-left:0;
+	border-right:0;
+	color:#820028;
+	text-align:left;
+	margin:5px auto;
+	padding:7px 5px 7px 30px;
+}
+div.div_note{
+	background:#f0feb1 url(../images/ico/coution.png) no-repeat;
+	background-position:10px 50%;
+	border:1px solid #d5d458;
+	border-left:0;
+	border-right:0;
+	color:#a67200;
+	text-align:left;
+	margin:5px auto;
+	padding:7px 5px 7px 30px;
+}
+div.sukses{
+	background:#fffbcc url(../images/ico/success.png) no-repeat;
+	background-position:10px 50%;
+	border:1px solid #e7da57;
+	border-left:0;
+	border-right:0;
+	text-align:left;
+	color:#333;
+	margin:5px auto;
+	padding:7px 5px 7px 30px;
+}
+div.error{
+	background:#ffece8 url(../images/ico/alert.png) no-repeat;
+	background-position:10px 50%;
+	border:1px solid #c00;
+	border-left:0;
+	border-right:0;
+	text-align:left;
+	color:#333;
+	margin:5px auto;
+	padding:7px 5px 7px 30px;
+}
+div.sukses a,div.error a{color:#59a2e3;}
+

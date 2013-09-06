@@ -1,0 +1,118 @@
+a.button
+{
+	text-decoration:none;
+	text-shadow:0 1px 0 #fff;
+	color:#444;
+	line-height:16px;
+	height:17px;
+	display:inline-block;
+	float:left;
+	background:#F3F3F3;
+	border:solid 1px #D9D9D9;
+	border-radius:2px;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-transition:border-color .20s;
+	-moz-transition:border-color .20s;
+	-o-transition:border-color .20s;
+	transition:border-color .20s;
+	padding:5px 6px 4px;
+	margin:0;
+	font-family:'LG';
+}
+a.button.l
+{
+	border-top-right-radius:0;
+	-webkit-border-top-right-radius:0;
+	-moz-border-radius-topright:0;
+	border-bottom-right-radius:0;
+	-webkit-border-bottom-right-radius:0;
+	-moz-border-radius-bottomright:0;
+	margin:5px 0 5px 5px
+}
+
+a.button.m
+{
+	border-left-color:#F4F4F4;
+	border-radius:0;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	margin:5px 0
+}
+
+a.button.r
+{
+	border-left-color:#F4F4F4;
+	border-top-left-radius:0;
+	-webkit-border-top-left-radius:0;
+	-moz-border-radius-topleft:0;
+	border-bottom-left-radius:0;
+	-webkit-border-bottom-left-radius:0;
+	-moz-border-radius-bottomleft:0;
+	margin:5px 5px 5px 0
+}
+/*
+a.button:hover
+{
+	background:#f9f9f9;
+	color:#333;
+	border-color:silver
+}
+
+a.button:active
+{
+	color:#ddd;
+	-moz-box-shadow:inset 0 0 10px #D4D4D4;
+	-webkit-box-shadow:inset 0 0 10px #D4D4D4;
+	box-shadow:inset 0 0 10px #D4D4D4;
+	border-color:#ddd
+}
+
+a.button.on:active
+{
+	border-color:#ddd
+}*/
+
+a.button.action
+{
+	border:1px solid #D8D8D8!important;
+	background:0;
+	-webkit-transition:border .20s;
+	-moz-transition:border .20s;
+	-o-transition:border .20s;
+	transition:border .20s
+}
+
+a.button.action:hover
+{
+	border:1px solid #C6C6C6!important;
+	background:0;
+	-moz-box-shadow:0 1px 0 #DDD;
+	-webkit-box-shadow:0 1px 0 #DDD;
+	box-shadow:iset 0 1px 0 #DDD
+}
+
+a.button.on{
+	font-weight:bold;
+}
+
+a.button.button2{
+	line-height:11px;
+	height:12px;
+	padding:5px 4px 5px 4px;
+	margin:0;
+}
+
+a.button.button3{
+	line-height:11px;
+	height:13px;
+	padding:7px 8px;
+	margin:0;
+}
+
+a.button.button4{
+	line-height:7px;
+	height:8px;
+	padding:4px;
+	margin:0;
+}

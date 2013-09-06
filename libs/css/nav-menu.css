@@ -1,0 +1,123 @@
+ul.mainMenu .topNavLink span.jTips{
+	top:3px;
+	
+	position:absolute;
+	
+	color:#fff;
+	
+	font-size:8px;
+	padding:1px 4px;
+	
+	height:10px;
+	
+	margin:0 0 20px 0;
+	background:rgba(224,36,36,0.8);
+	
+	
+	border-radius:0;
+	
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	
+	
+	box-shadow:1px 1px 1px rgba(211,211,211,0.5);
+	-moz-box-shadow:1px 1px 1px rgba(211,211,211,0.5);
+	-webkit-box-shadow:1px 1px 1px rgba(211,211,211,0.5);
+}
+.mainMenu .menuHome,
+.mainMenu .menuJump,
+.mainMenu .menuJumpBack,
+.mainMenu .menuUpdate, 
+.mainMenu .menuApps,
+.mainMenu .menuPlugins,
+.mainMenu .menuInstall,
+.mainMenu .menuHelp
+{
+	background-image:url(../img/icon-nav-menu.png)!important;
+	background-repeat:no-repeat!important;
+}
+
+.mainMenu .menuHome
+{
+	background-position:-5px 8px!important;
+	height:36px;
+	width:20px
+}
+
+.mainMenu .menuJump
+{
+	background-position:-160px 8px!important;
+	height:36px;
+	width:20px;
+}
+
+.mainMenu .menuJumpBack
+{
+	background-position:-190px 8px!important;
+	height:36px;
+	width:20px
+}
+
+.mainMenu .menuUpdate
+{
+	float:left;
+	background-position:-27px 8px!important;
+	height:36px;
+	width:20px;
+	margin:0 5px 0 0;
+}
+
+.mainMenu .menuApps
+{
+	float:left;
+	background-position:-50px 8px!important;
+	height:36px;
+	width:22px;
+	margin:0 5px 0 0;
+}
+
+.mainMenu .menuPlugins
+{
+	float:left;
+	background-position:-75px 8px!important;
+	height:36px;
+	width:20px;
+	margin:0 5px 0 0;
+}
+
+.mainMenu .menuInstall
+{
+	float:left;
+	background-position:-105px 8px!important;
+	height:36px;
+	width:20px;
+	margin:0 5px 0 0;
+}
+
+.mainMenu .menuHelp
+{
+	float:left;
+	background-position:-133px 8px!important;
+	height:36px;
+	width:20px;
+	margin:0 5px 0 0;
+}
+
+ul.mainMenu li .menuUpdateName, ul.mainMenu li .menuAppsName,ul.mainMenu li .menuPluginsName,ul.mainMenu li .menuInstallName,ul.mainMenu li .menuHelpName
+{
+	float:right;
+	font-weight:normal;
+}
+
+.animating{
+	animation: animate 1s cubic-bezier(0,1,1,0);			
+}
+
+@keyframes animate{
+	from {
+	   transform: scale(1);
+	}
+	to {
+	   transform: scale(1.7);
+	}
+}	

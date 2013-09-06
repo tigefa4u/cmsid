@@ -1,0 +1,41 @@
+#oops_body{
+	margin:30px auto 0 auto;
+	width:500px;
+}
+.oops_logo{
+	height:43px;
+	line-height:43px;
+	padding:0 5px;
+	border-bottom:1px solid #ddd;
+	font-family:"LGB";
+	background:#fff;
+}
+div.atentions_logo{
+	width:80px;
+	height:120px;
+	float:left;
+	background:url(../img/atention_logo.png) no-repeat center;
+}
+.oops_content{
+	color: #222;
+	margin: 0;
+	list-style: none;
+	background-color: #ffffff;
+	border-color: #ccc;
+	border-color: rgba(0, 0, 0, 0.2);
+	border-style: solid;
+	border-width: 1px;
+	-webkit-border-radius: 0 0 3px 3px;
+	-moz-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+
+h1{
+	font-family:"LGB";
+}

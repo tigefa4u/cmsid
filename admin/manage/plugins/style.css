@@ -1,0 +1,18 @@
+#list-comment{
+	max-height		:450px;
+	
+}
+.comment{
+	padding			:5px;
+	padding-bottom	:7px;
+}
+.comment .name{
+	font-family		:"LGB";
+}
+.avatar{
+	float			:left;
+	margin-top		:2px;
+	margin-right	:10px;
+}
+div.comment p.row-actions :hover {
+}

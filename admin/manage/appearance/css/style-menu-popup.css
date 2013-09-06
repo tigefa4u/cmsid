@@ -1,0 +1,152 @@
+/* BOXES
+------------------------------------------------------------------------- */
+.box {
+	background: #fff;
+	margin-bottom: 10px;
+}
+.box h2 {
+	margin: 0;
+	color: #902452;
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+	border-style:dotted;
+}
+.box > section {
+	padding: 10px;
+}
+
+/* loading
+------------------------------------------------------------------------- */
+#loading_ajax {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 45%;
+	text-align: center;
+	background: #444;
+	color: #fff;
+	padding:10px;
+	z-index: 10003;
+}
+#loading_ajax img {
+	vertical-align: text-bottom;
+	margin-right: 2px;
+}
+
+/* modal box
+------------------------------------------------------------------------- */
+#gbox_bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	background: #ddd;
+	opacity: 0.6;
+	z-index: 10001;
+	cursor: pointer;
+}
+#gbox {
+	position: absolute;
+	position: fixed;
+	display: none;
+	z-index: 10002;
+	width: 370px;
+	color: #222;
+	margin: 0;
+	list-style: none;
+	background-color: #ffffff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+
+#gbox_header {
+	padding: 5px;
+	color: #000;
+	text-shadow: 1px 1px 0 #fff;
+}
+#gbox h2 {
+	padding: 17px;
+	padding-left:5px;
+	padding-right:5px;
+	font-size: 11px;
+	font-weight:normal;
+	
+	border-bottom:1px solid #ddd;
+	border-style:dotted;
+	font-family:"LGB";
+}
+#gbox .padding{
+	padding:5px;
+}
+
+#gbox_content {
+	overflow: auto;
+	max-height: 400px;
+}
+#gbox_footer {
+	padding: 5px;
+	border-top: 1px solid #eee;
+	border-style:dotted;
+	text-align: left;
+	-webkit-border-radius: 0 0 3px 3px;
+	-moz-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
+}
+
+.gbox_button {
+	padding: 6px 9px;
+	outline: none;
+	cursor: pointer;
+	color: #444;
+	text-shadow: 1px 1px 0 #fff;
+	border: 1px solid #999;
+	background: #f7f7f7;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#eee));
+	background: -moz-linear-gradient(#fff, #eee);
+	background: linear-gradient(#fff, #eee);
+}
+
+#gbox_footer .button.Save {
+	border-top-right-radius:0;
+	-webkit-border-top-right-radius:0;
+	-moz-border-radius-topright:0;
+	border-bottom-right-radius:0;
+	-webkit-border-bottom-right-radius:0;
+	-moz-border-radius-bottomright:0;
+}
+#gbox_footer .button.Cancel {
+	border-left-color:#F4F4F4;
+	border-top-left-radius:0;
+	-webkit-border-top-left-radius:0;
+	-moz-border-radius-topleft:0;
+	border-bottom-left-radius:0;
+	-webkit-border-bottom-left-radius:0;
+	-moz-border-radius-bottomleft:0;
+}
+
+button#gbox_ok {
+	color: #fff;
+	border: 1px solid #3b6e22;
+	background: #75ae5c;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#75ae5c), to(#649552));
+	background: -moz-linear-gradient(#75ae5c, #649552);
+	background: linear-gradient(#75ae5c, #649552);
+}
+#gbox_form input[type="text"] {
+	width: 95%;
+}
+#gbox_loading {
+}
+#gbox input[type="text"] {
+	width: 95%;
+}

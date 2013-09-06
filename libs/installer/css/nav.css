@@ -1,0 +1,114 @@
+div.nav-bg{
+	background:#ffffff;
+}
+div.nav > div.nav-top
+{
+	height:100%;
+	margin:0 auto;
+	padding:0;
+}
+div.nav.nav-fix
+{
+	border:0;
+	border-bottom:1px solid #b3b3b3;
+	height:39px;
+	background:#f1f1f1;
+	/*position:fixed;*/
+	top:0;
+	left:0;
+	right:0
+}
+
+.mainMenu li.current a
+{
+	text-decoration:none;
+	border-bottom:2px solid #dd4b39;
+}
+
+ul.mainMenu
+{
+	list-style:none;
+	margin:0;
+	font-family:"LGB";
+}
+
+ul.mainMenu li
+{
+	float:left
+}
+
+ul.mainMenu li.topNavLink a
+{
+	vertical-align:top;
+	height:38px;
+	min-width:20px;
+	line-height:38px;
+	padding:0 10px
+}
+
+ul.mainMenu li.topNavLink.tinyman
+{
+	padding:0
+}
+
+.mainMenu .menuPulldown,.mainMenu .menuViewsearch
+{
+	background-image:url(../img/icon-ui.png)!important;
+	background-repeat:no-repeat!important;
+}
+
+.mainMenu .menuOverStyle{
+	background-repeat:no-repeat!important;
+	background-position:0 12px!important;
+	height:36px;
+	width:50px;
+}
+
+.mainMenu .menuPulldown
+{
+	background-position:0 0!important;
+	height:36px;
+	width:18px
+}
+
+.mainMenu .menuViewsearch
+{
+	background-position:0 -34px!important;
+	height:36px;
+	width:18px
+}
+
+ul.mainMenu li.topNavLink .headerTinymanName
+{
+	display:inline-block;
+	max-width:175px;
+	overflow:hidden;
+	padding-right:8px;
+	text-overflow:ellipsis;
+	vertical-align:top;
+	white-space:nowrap;
+	font-family:"LGB";
+}
+
+ul.mainMenu li .img
+{
+	border:solid 1px #676666;
+	-webkit-border-radius:2px;
+	height:23px;
+	width:23px;
+	margin:7px 5px 3px 3px;
+	
+	-moz-border-radius: 40px;
+	-khtml-border-radius: 40px;
+	-webkit-border-radius: 40px;
+	border-radius: 40px;
+	behavior: url(border-radius.htc);
+}
+
+.mainMenu li a
+{
+	display:block;
+	font-weight:700;
+	color:#666;
+	text-decoration:none
+}

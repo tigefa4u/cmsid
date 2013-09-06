@@ -1,0 +1,373 @@
+#file,button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+input[disabled],
+{
+	background:#f2f2f2;
+}
+form{
+	text-align:left;
+}
+.button-right{
+	margin-right:0; 
+	float:right; 
+	margin-right:-5px
+}
+form  .required {
+    font-weight:bold;
+    color:#F00;
+}
+textarea {
+    resize: none;
+}
+input[type="radio"]{
+}
+input[type="checkbox"]{
+	float:left;
+	margin-top:5px;
+	margin-right:2px;
+	clear:both;
+}
+
+button,
+input,
+select,
+textarea,
+label {
+    margin-bottom:3px;
+}
+
+button,
+input,
+select,
+textarea {
+    padding: 2px;
+	padding-bottom:5px;
+    padding: 6px 2px;
+	padding-top:5px;
+    border: 1px solid #ddd;
+	font-family: "LG";
+}
+
+input[type="text"],input[type="password"]{
+	padding-top:6px;
+	padding-bottom:6px;
+}
+
+button,
+input[type="text"],
+input[type="password"],
+select,
+textarea{	
+    box-shadow: 0 1px 1px #f0f0f0 inset, 0 1px 0 #fff;
+    -moz-box-shadow: 0 1px 1px #f0f0f0 inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #f0f0f0 inset, 0 1px 0 #fff;
+}
+
+button:[disabled="disabled"],
+input:[disabled="disabled"],
+{
+    border: 1px solid #ddd;
+    background-color: #f2f2f2;
+}
+
+/* Remove box shadow firefox, chrome and opera put around required fields. It looks rubbish. */
+input:required, textarea:required {
+}
+
+/* Normalize placeholder styles */
+
+/* chrome, safari */
+::-webkit-input-placeholder {
+    color:#ccc;
+    font-style:normal;
+}
+
+/* mozilla */
+button:-moz-placeholder,input:-moz-placeholder, textarea:-moz-placeholder {
+    color:#ccc;
+    font-style:normal;
+}
+
+/* ie (faux placeholder) */
+button.placeholder-text,input.placeholder-text, textarea.placeholder-text  {
+    color:#ccc;
+    font-style:normal;
+}
+
+button,input[type="button"], input[type="submit"], input[type="reset"], input[type="submit"] .button, input[type="reset"] .button{
+	font-size:11px;
+	line-height:27px;
+	height:28px;
+	font-family: "LG";
+}
+
+button,input[type="button"],input[type="submit"], input[type="reset"]{
+	cursor:pointer;
+	text-decoration:none;
+	line-height:10px;
+	display:inline-block;
+	border-radius:2px;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-transition:border-color .20s;
+	-moz-transition:border-color .20s;
+	-o-transition:border-color .20s;
+	transition:border-color .20s;
+	padding:5px 4px;
+	
+	/* color default*/
+	background:#F3F3F3;
+	border:solid 1px #D9D9D9;
+	color:#444;
+}
+
+button:hover,input[type="button"]:hover,input[type="submit"]:hover, input[type="submit"]:focus, input[type="reset"]:hover, input[type="reset"]:focus {  
+}
+
+button:active,input[type="button"]:active,input[type="submit"]:active, input[type="reset"]:active {
+	/* color default*/
+	color:#ddd;
+	-moz-box-shadow:inset 0 0 10px #D4D4D4;
+	-webkit-box-shadow:inset 0 0 10px #D4D4D4;
+	box-shadow:inset 0 0 10px #D4D4D4;
+	border-color:#ddd
+}
+
+button::-moz-focus-inner,input[type="button"]::-moz-focus-inner,input[type="submit"]::-moz-focus-inner, input[type="reset"]::-moz-focus-inner {
+}
+
+input[type="file"]{
+    border: 1px solid #ddd;
+	padding:3px;	
+		
+	background: #f7f7f7; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f7f7f7 0%, #f3f3f3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f3f3f3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f7f7f7 0%,#f3f3f3 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f7f7f7 0%,#f3f3f3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f7f7f7 0%,#f3f3f3 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f7f7f7 0%,#f3f3f3 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f3f3f3',GradientType=0 ); /* IE6-9 */
+}
+
+.button.on{
+	font-family: "LGB";
+	/*font-weight:bold;*/
+	/*margin-right:-5px;*/
+}
+input[type="submit"].button,input[type="Reset"].button{
+}
+input[type="submit"].button.l,input[type="Reset"].button.l{
+	border-top-right-radius:0;
+	-webkit-border-top-right-radius:0;
+	-moz-border-radius-topright:0;
+	border-bottom-right-radius:0;
+	-webkit-border-bottom-right-radius:0;
+	-moz-border-radius-bottomright:0;
+	margin-left:0;
+	margin-right:0;
+}
+input[type="submit"].button.m,input[type="Reset"].button.m{
+	border-left-color:#F4F4F4;
+	border-radius:0;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+}
+input[type="submit"].button.r,input[type="Reset"].button.r{	
+	border-left-color:#F4F4F4;
+	
+	border-top-left-radius:0;
+	-webkit-border-top-left-radius:0;
+	-moz-border-radius-topleft:0;
+	border-bottom-left-radius:0;
+	-webkit-border-bottom-left-radius:0;
+	-moz-border-radius-bottomleft:0;
+	margin-right:0;
+}
+
+
+input[type="submit"].button:hover,input[type="Reset"].button:hover
+{
+	/* color default*/
+	background:#F4F4F4;
+	color:#333;
+	border-color:silver
+}
+
+input[type="submit"].button:active,input[type="Reset"].button:active{
+	/* color default*/
+	color:#ddd;
+	-moz-box-shadow:inset 0 0 10px #D4D4D4;
+	-webkit-box-shadow:inset 0 0 10px #D4D4D4;
+	box-shadow:inset 0 0 10px #D4D4D4;
+	border-color:#ddd
+}
+
+input[type="submit"].button.on:active,,input[type="Reset"].button.on:active{
+	border-color:#ddd
+}
+
+input[type="submit"].button.action,,input[type="Reset"].button.action{
+	border:1px solid #D8D8D8!important;
+	background:0;
+	-webkit-transition:border .20s;
+	-moz-transition:border .20s;
+	-o-transition:border .20s;
+	transition:border .20s
+}
+
+
+input[type="submit"].button.action:hover,,input[type="Reset"].button:action:hover{
+	border:1px solid #C6C6C6!important;
+	background:0;
+	-moz-box-shadow:0 1px 0 #DDD;
+	-webkit-box-shadow:0 1px 0 #DDD;
+	box-shadow:iset 0 1px 0 #DDD
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+}
+input[type=checkbox],
+input[type=radio] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  margin-right:2px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  vertical-align: bottom;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+input[type=checkbox]:active,
+input[type=radio]:active {
+  border-color: #c6c6c6;
+  background: #ebebeb;
+  }
+input[type=checkbox]:hover {
+  border-color: #c6c6c6;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+}
+input[type=radio] {
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
+  width: 15px;
+  height: 15px;
+}
+input[type=checkbox]:checked,
+input[type=radio]:checked {
+  background: #fff;
+}
+
+input[type=radio]:checked,input[type=checkbox]:checked,input[type=radio]:hover,input[type=checkbox]:hover {	
+	background: #f7f7f7; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f7f7f7 0%, #f3f3f3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f3f3f3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f7f7f7 0%,#f3f3f3 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f7f7f7 0%,#f3f3f3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f7f7f7 0%,#f3f3f3 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f7f7f7 0%,#f3f3f3 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f3f3f3',GradientType=0 ); /* IE6-9 */
+}
+
+input[type=radio]:checked::after {
+  content: '';
+  display: block;
+  position: relative;
+  top: -2px;
+  left: -2px;
+  width: 7px;
+  height: 7px;
+  background: #666;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
+}
+input[type=checkbox]:checked::after {
+  content: url(../img/checkmark.png);
+  display: block;
+  position: absolute;
+  top: -6px;
+  left: -5px;
+}
+input[type=checkbox]:focus {
+  outline: none;
+  border-color:#4d90fe;
+}
+
+select,select:focus,.styledSelect {		
+		background: #f7f7f7; /* Old browsers */
+		background: -moz-linear-gradient(top,  #f7f7f7 0%, #f3f3f3 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f3f3f3)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #f7f7f7 0%,#f3f3f3 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #f7f7f7 0%,#f3f3f3 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #f7f7f7 0%,#f3f3f3 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #f7f7f7 0%,#f3f3f3 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f3f3f3',GradientType=0 ); /* IE6-9 */
+}
+/* <span class="select-arrow"></span> */
+.select-arrow { 
+		display: inline-block;
+		position: absolute;
+		margin: 1.05em 0 0 -1.3em;
+		border-left: 4px solid transparent;
+		border-right: 4px solid transparent;
+		border-top: 5px solid #777;
+}
+
+input[disabled]:hover,
+select[disabled]:hover,
+button[disabled]:hover,
+select[disabled]:hover,
+textarea[disabled]:hover
+{
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	border:1px solid #F60;
+}
+
+#file {
+    display:block;
+	text-decoration:none;
+	font-family: "LGB";
+	padding:6px 0;
+	padding-left:5px;
+	margin-top:-1px;
+	min-height:14px;
+	border:1px solid #ddd;
+	background:#f8f8f8;
+	min-width:80px;
+	max-width:100%;
+	cursor:pointer;
+}
+
+#file:hover{
+	text-decoration:none;
+}
+
+select,
+input,
+textarea,
+label {
+    padding-left:5px;
+	padding-right:5px;
+}

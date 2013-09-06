@@ -1,0 +1,107 @@
+/* TipTip CSS - Version 1.2 (Modified) */
+
+#container {
+	text-align: left;
+	width: 865px;
+	margin: 0 auto;
+	padding: 20px;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+			
+	-moz-box-shadow: 0px 0px 10px #BBB;
+	-webkit-box-shadow: 0px 0px 10px #BBB;
+	box-shadow: 0px 0px 10px #BBB;
+}
+
+#tiptip_holder {
+	display: none;
+	position: absolute;
+	top: -5px;
+	left: 0;
+	z-index: 99999;
+}
+
+#tiptip_holder.tip_top {
+	padding-bottom: 5px;
+}
+
+#tiptip_holder.tip_bottom {
+	padding-top: 5px;
+}
+
+#tiptip_holder.tip_right {
+	padding-left: 5px;
+}
+
+#tiptip_holder.tip_left {
+	padding-right: 5px;
+}
+
+#tiptip_content {
+	font-size: 11px;
+	color: #FFF;
+	padding: 7px;
+	padding:3px;
+	padding-left:5px;
+	padding-right:5px;
+	background: rgba(0,0,0,1);
+}
+
+#tiptip_arrow, #tiptip_arrow_inner {
+	position: absolute;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 6px;
+	height: 0;
+	width: 0;
+}
+
+#tiptip_holder.tip_top #tiptip_arrow {
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow {
+}
+
+#tiptip_holder.tip_right #tiptip_arrow {
+}
+
+#tiptip_holder.tip_left #tiptip_arrow {
+}
+
+#tiptip_holder.tip_top #tiptip_arrow_inner {
+	margin-top: -7px;
+	margin-left: -6px;
+	border-top-color: rgba(0,0,0,1);
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow_inner {
+	margin-top: -5px;
+	margin-left: -6px;
+	border-bottom-color: rgba(0,0,0,1);
+}
+
+#tiptip_holder.tip_right #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -5px;
+	border-right-color: rgba(0,0,0,1);
+}
+
+#tiptip_holder.tip_left #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -7px;
+	border-left-color: rgba(0,0,0,1);
+}
+
+/* Webkit Hacks  */
+@media screen and (-webkit-min-device-pixel-ratio:0) {	
+	#tiptip_content {
+		padding: 4px 8px 5px 8px;
+		background-color: rgba(0,0,0,1);
+	}
+	#tiptip_holder.tip_bottom #tiptip_arrow_inner { 
+		border-bottom-color: rgba(0,0,0,1);
+	}
+	#tiptip_holder.tip_top #tiptip_arrow_inner { 
+		border-top-color: rgba(0,0,0,1);
+	}
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<themes>
+    <name>iNet</name>
+    <version>1.2</version>
+    <creationDate>Maret 18, 2013</creationDate>
+    <author>Eko Azza</author>
+    <authorEmail>admin@cmsid.org</authorEmail>
+    <authorUrl>http://www.cmsid.org</authorUrl>
+    <copyright>2012</copyright>
+    <license>${licence}</license>
+    <description>Theme iNet ini merupakan theme adaptasi dari auracms yang saya buat</description>
+</themes>

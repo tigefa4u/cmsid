@@ -1,0 +1,124 @@
+/* menu group
+------------------------------------------------------------------------- */
+
+ul#menu-group {
+	width: 100%;
+	height:31px;
+	background:#fff;
+}
+ul#menu-group li {
+	float: left;
+}
+ul#menu-group li#add-group {
+	float: right;
+}
+ul#menu-group li#add-group a {
+	margin-right: 0;
+}
+ul#menu-group li a {
+	display: block;
+	padding-top:6px;
+	padding-bottom:6px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-right:2px;
+	color: #000;
+	background: #f8f8f8;
+	text-decoration:none;
+	font-family:"LGB";
+	
+	border-bottom:2px solid #ccc;
+}
+ul#menu-group li.current a,ul#menu-group li a:hover  {
+	color: #000;
+	background: #f2f2f2;
+	border-bottom:2px solid #F00;
+}
+
+
+#edit-form {
+	display: none;
+	border: 1px solid #ccc;
+	background: #fcfcfc;
+	border-top: none;
+	padding: 10px 0;
+}
+
+#menu-group-add {
+	display: none;
+}
+
+/* nested sortable
+------------------------------------------------------------------------- */
+.ns-helper {
+	border: 1px dashed #eee;
+	background: #fafafa;
+}
+.sortable_easymn {
+	margin: 5px 0;
+}
+.sortable_easymn img {
+	vertical-align: middle;
+}
+#ns-header {
+	padding: 8px 10px;
+	color: #555;
+	background: #f2f2f2;
+	border: none;
+	font-family:"LGB";
+}
+#ns-header div {
+	border: none;
+}
+#ns-footer {
+	text-align: right;
+	margin-top: 10px;
+}
+.ns-row {
+	line-height: 18px;
+	padding: 7px 5px;
+	border: 1px solid #eee;
+	background: #f7f7f7;
+	position: relative;
+}
+.ns-row div {
+	border-left: 1px solid #eee;
+	height: 18px;
+	overflow: hidden;
+	position: absolute;
+	top: 6px;
+	padding-left: 10px;
+}
+div.ns-title {
+	position: static;
+	border: none;
+	padding-left: 0;
+}
+.ns-actions {
+	width: 50px;
+	right: 80px;
+}
+.ns-orders {
+	width: 50px;
+	right: 10px;
+}
+.ns-class {
+	width: 100px;
+	right: 100px;
+}
+.ns-url {
+	width: 140px;
+	right: 170px;
+}
+.ns-actions a {
+	margin-left: 5px;
+}
+.ns-orders a {
+	margin-left: 5px;
+}
+
+/* error
+------------------------------------------------------------------------- */
+span.error {
+	color: red;
+}

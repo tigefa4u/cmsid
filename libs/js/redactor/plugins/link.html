@@ -1,0 +1,50 @@
+<div class="redactor_sidebar">
+	<div id="redactor_tabs">
+		<div><a href="javascript:void(null);" class="redactor_tabs_act">URL</a></div>
+		<div><a href="javascript:void(null);">Email</a></div>
+		<div><a href="javascript:void(null);">%RLANG.anchor%</a></div>
+		<div><a href="javascript:void(null);">%RLANG.file%</a></div>
+	</div>
+</div>
+<div style="clear:both"></div>
+<div class="redactor_content">
+<form id="redactorInsertLinkForm" method="post" action="" enctype="multipart/form-data">
+	
+	<input type="hidden" id="redactor_tab_selected" value="1" />
+	
+	<div class="redactor_tab" id="redactor_tab1">
+		<label>URL</label>
+        <input id="redactor_link_url" style="width: 97%;"  /><br />
+        <label>%RLANG.text%</label>
+        <input class="redactor_link_text" id="redactor_link_url_text" style="width: 97%;" />
+	</div>
+	<div class="redactor_tab" id="redactor_tab2" style="display: none;">
+		<label>Email</label>
+        <input id="redactor_link_mailto" style="width: 99%;"  /><br />
+        <label>%RLANG.text%</label>
+        <input class="redactor_link_text" id="redactor_link_mailto_text" style="width: 97%;" />
+	</div>
+	<div class="redactor_tab" id="redactor_tab3" style="display: none;">
+		<label>%RLANG.anchor%</label>
+        <input id="redactor_link_anchor" style="width: 95%;"  /><br />
+        <label>%RLANG.text%</label>
+        <input class="redactor_link_text" id="redactor_link_anchor_text" style="width: 97%;" />
+	</div>
+	<div class="redactor_tab" id="redactor_tab4" style="display: none;">
+		<label>%RLANG.text%</label>
+        <input class="redactor_link_text" id="redactor_link_file_text" style="width: 50%;" /><br />
+        <input type="file" id="redactor_file" name="file" />
+	</div>
+
+
+</form>
+</div>
+<div class="redactor_content_border" style="padding-left:5px; padding-right:5px;">
+<span class="redactor_btns_box">
+<input type="button" id="redactor_insert_link_btn" value="%RLANG.insert%" class="button on" />
+<a href="javascript:void(null);" id="redactor_btn_modal_close">%RLANG.cancel%</a>
+</span>
+<br style="clear: both;"/>
+<br style="clear: both;"/>
+</div>
+

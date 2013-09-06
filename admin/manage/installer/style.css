@@ -1,0 +1,71 @@
+div.sc_menu {
+  /* Set it so we could calculate the offsetLeft */
+  height: 270px;
+  width: 500px;
+  /* Add scroll-bars */
+  overflow: auto;
+}
+ul.sc_menu {
+  display: block;
+  height: 270px;
+  /* Max width here, for users without Javascript */
+  width: 6000px;
+  /* Remove default margin */
+  margin: 0;
+  list-style: none;
+}
+.sc_menu li {
+  display: block;
+  float: left;
+  padding: 0 4px;
+}
+.sc_menu a {
+  display: block;
+  text-decoration: none;
+}
+.sc_menu span {
+  /* We want a caption to display on the next line */
+  display: block;
+  margin-top: 3px;
+  text-align: center;
+  font-size: 12px;
+  color: #000;
+}
+
+.sc_menu span {
+  display: none;
+  margin-top: 3px;
+  text-align: center;
+  font-size: 12px;
+  color: #000;
+}
+.sc_menu a:hover span {
+  display: block;
+}
+.sc_menu img {
+}
+.sc_menu img {
+	max-height:224px;
+}
+.sc_menu a img {
+  filter:alpha(opacity=30);
+  opacity: 0.3;
+}
+.sc_menu a:hover img {
+  filter:alpha(opacity=100);
+  opacity: 1;
+}
+
+div.aside {
+	width:0px;
+	display:none;
+}
+div.body-content {
+	width:100%;
+}
+div.body-content.right {
+	float:left;
+}
+div.gd.full-single {
+	width: 680px;
+}

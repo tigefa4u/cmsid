@@ -1,0 +1,488 @@
+body {
+    background: #fff;
+	border:0;
+	margin:0;
+	padding:0;
+}
+
+
+fieldset {
+    margin: 0 5px 5px 0px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    cursor: default;
+}
+
+fieldset td {
+    white-space: nowrap;
+}
+
+legend {
+    margin: 0;
+    padding:0 3px;
+}
+
+.padding{
+	padding:10px;
+}
+
+#folders {
+    background: #f8f8f8;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#files {
+    float: right;
+	padding:2px;
+	padding-bottom:1px;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+#files.drag {
+    background: #ddebf8;
+}
+
+#topic {
+    padding-left: 12px;
+}
+
+
+div.folder {
+    padding-top: 10px;
+    margin-top: 4px;
+    white-space: nowrap;
+}
+
+div.folder a {
+    text-decoration: none;
+    cursor: default;
+    outline: none;
+    color: #000;
+}
+
+span.folder {
+    padding: 5px 5px 5px 23px;
+    outline: none;
+    background: no-repeat 3px center;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+span.brace {
+    width: 16px;
+    height: 16px;
+    outline: none;
+}
+
+span.current {
+    background-image: url(img/tree/folder_current.png);
+    background-color: #f2f2f2;
+    border-color: #ddd;
+    color: #000;
+}
+
+span.regular {
+    background-image: url(img/tree/folder.png);
+}
+
+span.regular:hover, span.context {
+    background-color: #f2f2f2;
+    border-color: #ddd;
+    color: #000;
+}
+
+span.opened {
+    background-image: url(img/tree/minus.png);
+}
+
+span.closed {
+    background-image: url(img/tree/plus.png);
+}
+
+span.denied {
+    background-image: url(img/tree/denied.png);
+}
+
+div.file {
+    padding: 4px;
+    margin: 3px;
+    border: 1px solid #ddd;
+    background:none;
+}
+
+div.file:hover {
+    background-color: #f2f2f2;
+    border-color: #ddd;
+    color: #000;
+}
+
+div.file .name {
+    margin-top: 4px;
+    height: 16px;
+    overflow: hidden;
+}
+
+div.file .time {
+    font-size: 10px;
+}
+
+div.file .size {
+    font-size: 10px;
+}
+
+#files div.selected,
+#files div.selected:hover {
+    background-color: #f2f2f2;
+    border-color: #767575;
+    color: #000;
+}
+
+tr.file > td {
+    padding: 5px;
+    background-color: #f8f8f8;
+}
+
+tr.file:hover > td {
+    background-color: #f2f2f2;
+    border-color: #ddd;
+}
+
+tr.selected > td:active,
+tr.selected > td,
+tr.selected:hover > td {
+    background-color: #ddd;
+    border-color: #eee;
+    color: #000;
+}
+
+#toolbar {
+    padding: 5px;
+	padding-bottom:0;
+	width:100%;
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+}
+
+#toolbar a {
+    color: #000;
+    padding: 10px;
+	padding-left:24px;
+    margin-right: 5px;
+    background: no-repeat 2px center;
+    outline: none;
+    display: block;
+    float: left;
+}
+
+#toolbar a:hover,
+#toolbar a.hover {
+	border-bottom:1px solid #818285;
+}
+
+#toolbar a.selected {
+	border-bottom:1px solid #dd4b39;
+}
+
+#toolbar a[href="kcact:upload"] {
+    background-image: url(img/icons/upload.png);
+}
+
+#toolbar a[href="kcact:refresh"] {
+    background-image: url(img/icons/refresh.png);
+}
+
+#toolbar a[href="kcact:settings"] {
+    background-image: url(img/icons/settings.png);
+}
+
+#toolbar a[href="kcact:about"] {
+    background-image: url(img/icons/about.png);
+}
+
+#toolbar a[href="kcact:maximize"] {
+    background-image: url(img/icons/maximize.png);
+}
+
+#settings {
+	padding:5px;
+	background:#f9f9f9;
+	border-bottom:1px solid #f2f2f2;
+}
+
+.box, #loading, #alert {
+	text-align:left;
+	color: #222;
+	margin: 0;
+	list-style: none;
+	background-color: #ffffff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+
+.box div {}
+
+div.title {
+	padding: 17px;
+	padding-left:7px;
+	padding-right:7px;
+	font-size: 11px;
+	font-weight:normal;
+	text-align:left;
+	
+	border-bottom:1px solid #ddd;
+	border-style:dotted;
+	font-family:"LGB";
+}
+
+.about div.title {
+    cursor: default;
+}
+
+span.close, span.clicked {
+    float: right;
+    width: 19px;
+    height: 19px;
+    background: url(img/icons/close.png);
+    margin-top: -3px;
+    cursor: default;
+}
+
+span.close:hover {
+    background: url(img/icons/close-hover.png);
+}
+
+span.clicked:hover {
+    background: url(img/icons/close-clicked.png);
+}
+
+
+#loading {
+    background-image: url(img/loading.gif);
+    margin-right: 4px;
+}
+
+#alert div.message, #dialog div.question {
+    padding: 0 0 0 40px;
+}
+
+#alert {
+    background: #fff url(img/alert.png) no-repeat 8px 29px;
+}
+
+#dialog div.question {
+    background: #fff url(img/confirm.png) no-repeat 0 0;
+}
+
+#alert div.ok, #dialog div.buttons {
+    padding-top: 5px;
+    text-align: right;
+}
+
+.menu {
+    padding: 2px;
+    border: 1px solid #acaaa7;
+    background: #e4e3e2;
+    opacity: 0.95;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 3px 3px 3px 22px;
+    background: no-repeat 2px center;
+    color: #000;
+    margin: 0;
+    background-color: #e4e3e2;
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.menu .delimiter {
+    border-top: 1px solid #acaaa7;
+    padding-bottom: 3px;
+    margin: 3px 2px 0 2px;
+}
+
+.menu a:hover {
+    background-color: #cfcfcf;
+    border-color: #afadaa;
+}
+
+.menu a[href="kcact:refresh"] {
+    background-image: url(img/icons/refresh.png);
+}
+
+.menu a[href="kcact:mkdir"] {
+    background-image: url(img/icons/folder-new.png);
+}
+
+.menu a[href="kcact:mvdir"], .menu a[href="kcact:mv"] {
+    background-image: url(img/icons/rename.png);
+}
+
+.menu a[href="kcact:rmdir"], .menu a[href="kcact:rm"], .menu a[href="kcact:rmcbd"] {
+    background-image: url(img/icons/delete.png);
+}
+
+.menu a[href="kcact:clpbrdadd"] {
+    background-image: url(img/icons/clipboard-add.png);
+}
+
+.menu a[href="kcact:pick"], .menu a[href="kcact:pick_thumb"] {
+    background-image: url(img/icons/select.png);
+}
+
+.menu a[href="kcact:download"] {
+    background-image: url(img/icons/download.png);
+}
+
+.menu a[href="kcact:view"] {
+    background-image: url(img/icons/view.png);
+}
+
+.menu a[href="kcact:cpcbd"] {
+    background-image: url(img/icons/copy.png);
+}
+
+.menu a[href="kcact:mvcbd"] {
+    background-image: url(img/icons/move.png);
+}
+
+.menu a[href="kcact:clrcbd"] {
+    background-image: url(img/icons/clipboard-clear.png);
+}
+
+a.denied {
+    color: #666;
+    opacity: 0.5;
+    filter: alpha(opacity:50);
+    cursor: default;
+}
+
+a.denied:hover {
+    background-color: #e4e3e2;
+    border-color: transparent;
+}
+
+#dialog {
+	background:rgba(0,0,0,0);
+}
+
+#dialog input[type="text"] {
+    margin: 5px 0;
+    width: 200px;
+}
+
+#dialog div.slideshow {
+	padding:0;
+	margin:0;
+}
+
+#dialog div.slideshow img {
+	border:1px silid rgba(0,0,0,0.8);
+	margin: 0;
+	background: #fff;	
+	box-shadow: 0 0 3px rgba(0,0,0,0.8);
+	-moz-box-shadow: 0 0 3px rgba(0,0,0,0.8);
+	-webkit-box-shadow: 0 0 3px rgba(0,0,0,0.8);
+}
+
+#shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    background: rgba(0,0,0,0.8);
+    z-index: 100;
+}
+
+#dialog img {
+    padding: 0;
+    margin: 0;
+    background: url(img/bg_transparent.png);
+}
+
+#loadingDirs {
+    padding: 5px 0 1px 24px;
+}
+
+.about {
+    text-align: center;
+}
+
+.about div.head {
+    font-size: 12px;
+    padding: 3px 0 8px 0;
+}
+
+.about div.head a {
+    background: url(img/kcf_logo.png) no-repeat left center;
+    padding: 0 0 0 27px;
+    font-size: 17px;
+}
+
+.about a {
+    text-decoration: none;
+    color: #0055ff;
+}
+
+.about a:hover {
+    text-decoration: underline;
+}
+
+.about button {
+    margin-top: 8px;
+}
+
+#clipboard {
+    padding: 0 4px 1px 0;
+}
+
+#clipboard div {
+    background: url(img/icons/clipboard.png) no-repeat center center;
+    border: 1px solid transparent;
+    padding: 1px;
+    cursor: pointer;
+}
+
+#clipboard div:hover {
+    background-color: #bfbdbb;
+    border-color: #a9a59f;
+}
+
+#clipboard.selected div, #clipboard.selected div:hover {
+    background-color: #c9c7c4;
+    border-color: #3687e2;
+}
+
+#checkver {
+    padding-bottom: 8px;
+}
+#checkver > span {
+    padding: 2px;
+    border: 1px solid transparent;
+}
+
+#checkver > span.loading {
+    background: url(img/loading.gif);
+    border: 1px solid #3687e2;
+}
+
+#checkver span {
+    padding: 3px;
+}
+
+#checkver a {
+    font-weight: normal;
+    padding: 3px 3px 3px 20px;
+    background: url(img/icons/download.png) no-repeat left center;
+}
+

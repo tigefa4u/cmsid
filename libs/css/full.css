@@ -1,0 +1,29 @@
+.nav-bg{
+	min-width:623px;
+}
+div.nav > div.nav-top,
+div.nav > div.nav-top-sub { 
+	width:100%; 
+	padding-left:10px; 
+	padding-right:20px; 
+}
+.nav-top .right{
+	margin-right:20px;
+}
+.nav-top-sub .right{
+	margin-right:10px;
+}
+.body-content{ width:820px; }
+.gd.full{ width:820px; }
+.gd.full-single{ width:550px; margin:0 auto; margin-bottom:10px; }
+/*.gd, .column{ width:395px; }*/
+	
+#post-left{ width:75%; margin-top:5px; }
+#post-right{ width:24%; margin-top:5px; }
+#body{ width:960px; }
+#widget{ width:180px; }
+#content{ width:620px; }
+.content-fix, #dashboard-widgets {
+	width:100%;
+	min-width:623px;
+}

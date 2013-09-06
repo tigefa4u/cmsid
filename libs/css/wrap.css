@@ -1,0 +1,12 @@
+div.aside{ width:138px; }
+div.nav > div.nav-top,div.nav > div.nav-top-sub { width:960px; }
+	
+.body-content{ width:100%; }
+.gd.full{ width:820px; }
+.gd.full-single{ width:550px; margin:0 auto; margin-bottom:10px; }
+/*.gd, .column{ width:395px; }*/
+	
+#post-left{ width:710px; float:left; }
+#post-right{ width:230px; float:right; }
+#body{ width:960px; }
+#widget{ width:180px; }
