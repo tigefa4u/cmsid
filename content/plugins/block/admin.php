@@ -166,7 +166,7 @@ foreach ( $registered_sidebars as $sidebar => $registered_sidebar ) {
 <?php 
 }
 ?>
-</select><br />
+</select><br /><br />
 <input name="submit" type="submit" value="Change" class="button l blue" /><input name="Reset" type="Reset" value="Clear" class="button r" />
 </form>
 <?php 
@@ -221,7 +221,7 @@ foreach ( $registered_sidebars as $sidebar => $registered_sidebar ) {
 <?php 
 }
 ?>
-</select><br />
+</select><br /><br />
 <input name="submit" type="submit" value="Add" />
 </form>
 <?php 

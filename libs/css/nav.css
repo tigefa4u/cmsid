@@ -17,7 +17,7 @@ div.nav.nav-fix
 	border:0;
 	border-bottom:1px solid #e9eaed;
 	height:39px;
-	background:#fff;
+	background:rgb(249,249,249);
 	/*position:fixed;*/
 	top:0;
 	left:0;
@@ -251,7 +251,7 @@ ul.mainMenu li .img
 .mainMenu li a
 {
 	display:block;
-	font-weight:700;
+	font-weight:normal;
 	color:#666;
 	text-decoration:none
 }
@@ -272,7 +272,7 @@ ul.mainMenu li .img
 .staticMenu dt a
 {
 	display:block;
-	font-weight:700;
+	font-weight:normal;
 	color:#fff;
 	text-decoration:none;
 	border:1px solid transparent;

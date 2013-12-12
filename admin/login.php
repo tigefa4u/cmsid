@@ -167,7 +167,7 @@ Silahkan hubungi <a href="mail:<?php echo get_option('admin_email');?>">administ
 </select><br>
 <label>Saya tinggal di</label><br>
 <select name="country"><?php $class_country->country_list(); ?></select><br>
-<label for="term">Saya setuju <a href="?login&go=tos">peraturan ini?</a></label>
+<label for="term">Saya setuju <strong><a href="?login&go=tos">peraturan ini?</a></strong></label>
 <input name="chekterm" value="1" id="term" type="checkbox" style="width:14px">
 </div>
 <input type="submit" name="signup" value="Daftar" id="signup-button"/>
@@ -229,8 +229,8 @@ if ( isset($_POST['deactive']) ){
 	$login->deactivate_account();
 }
 if (isset($_POST['submit'])){
-	$user_id	= filter_txt($_POST['user_id']);
-	$username	= filter_txt($_POST['username']);
+	$user_id	= filter_txt($r['ID']);
+	$username	= filter_txt($r['user_login']);
 	$author		= filter_txt($_POST['author']);
 	$email		= filter_txt($_POST['email']);
 	$thumb		= $_FILES['thumb'];
@@ -278,8 +278,6 @@ endif;
 </div>
 <div style="float:right; width:55%; border-left:1px solid #f2f2f2; padding-left:5px;">
 <label>Nama Pengguna</label>
-<input type="hidden" name="username" value="<?php echo $r['user_login']?>">
-<input type="hidden" name="user_id" value="<?php echo $r['ID']?>">
 <input type="text" name="username" class="input user disable" value="<?php echo $r['user_login']?>" disabled/><br />
 <label>Email</label><span class="required">*</span>
 <input type="text" name="email" class="input user" value="<?php echo $r['user_email']?>"/><br />
@@ -405,7 +403,7 @@ case'tos':
 }
 </style>
 <div id="login_box" style="overflow:auto; max-height:400px;">
-<div id="login_head" style="background:#fff; width:518px; line-height:50px; margin-top:-60px; margin-left:-30px; padding-left:30px; ">Term of use</div>
+<div id="login_head" style="background:#fff; width:518px; line-height:50px; margin-top:-60px; margin-left:-30px; padding-left:30px; ">Term of service</div>
 <strong>Aturan Umum dari portal</strong>
 <ol>
 <li>Portal kami dibuka untuk mengunjungi oleh semua orang tertarik. Untuk menggunakan semua ukuran jasa sebuah situs, perlu bagi Anda untuk mendaftar.</li>

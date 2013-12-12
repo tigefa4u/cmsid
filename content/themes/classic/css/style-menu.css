@@ -24,7 +24,7 @@
 /* 7. Vertical Menu */
 .home{ background:#f9fafa url(../images/home-small.gif) no-repeat 2px 7px !important; }
 .vertical ul{ width:100%; border-top:1px solid #e6e6e6; }
-.vertical li a{ display:block; background:#f9fafa url(../images/arrow_right.gif) no-repeat 2px 6px; padding:6px 10px 6px 17px; text-decoration:none; font-size:1em; font-weight:bold; color:#222; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; }
+.vertical li a{ display:block; background:#f9fafa url(../images/arrow_right.gif) no-repeat 2px 6px; padding:6px 10px 6px 17px; text-decoration:none; font-size:1em; font-weight:normal; color:#222; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; }
 .vertical li a:hover{ color:#16387c; text-decoration:none; }
 .vertical li{ display:inline; }
 .vertical li ul{ position:absolute; margin:-31px 0px 0px 159px; }
@@ -32,7 +32,7 @@
 /* 8. Horizontal Menu */
 .horizontal ul{ position: absolute; z-index: 999999;display:block; list-style-type:none; top: 190px; left:5px; }
 .horizontal li{ float:left; display:inline; background:none; padding:0px; list-style:none; }
-.horizontal li a{ float:left; display:block; padding:0px 10px 0px 10px; text-decoration:none; border-left:none; font-weight:bold; color: #fff; }
+.horizontal li a{ float:left; display:block; padding:0px 10px 0px 10px; text-decoration:none; border-left:none; font-weight:normal; color: #fff; }
 .horizontal li li{ background:none !important; }
 .horizontal li li a{ padding:6px 10px; line-height:16px; border-top:none; border-bottom:1px solid #e6e6e6; }
 .horizontal li ul{ display:block; background:#f9fafa; position:absolute; width:134px; top:10px; height:auto; margin-top:20px; margin-left:-1px; border-top:1px solid #e6e6e6; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; }

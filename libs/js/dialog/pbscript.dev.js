@@ -12,7 +12,11 @@ $(document).ready(function(){
 		var height = this.outerHeight();
 		var width = this.outerWidth();
 									
-		this.css({ height: 'auto', marginTop: '-' + (height+20)/2 + 'px', marginLeft: '-' + (width/2) + 'px' }).fadeIn('fast');
+		this.css({ 
+			height: 'auto', 
+			marginTop: '-' + (height+20)/2 + 'px', 
+			marginLeft: '-' + (width/2) + 'px' 
+		}).fadeIn('fast');
 	}
 	
 	// CLOSE a dialog

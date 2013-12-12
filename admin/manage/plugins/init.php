@@ -18,7 +18,6 @@ function get_widget(){
 		
 	if( $_GET['go'] == 'setting' ){
 	$gadget[] = array('title' => 'Info','desc' => info_plugin() );
-	$gadget[] = array('title' => 'Info Update','desc' => info_plugin_update());
 	}else{
 	$gadget[] = array('title' => 'Update Baru Tersedia','desc' => info_plugin_update_all());
 	}
@@ -118,15 +117,13 @@ if(!function_exists('delete_plugins')){
 }
 	
 if(!function_exists('del_folder_plugins')){
-	function del_folder_plugins($path){
-		if(empty($path))
-		return false;		
+	function del_folder_plugins($path){	
 		
-		$path_dir = plugin_path .'/'. $path;
-		if( file_exists( $path_dir.'/'.$path.'.php' ) ){
+		$path_dir = plugin_path ."/$path";
+		if( is_dir($path_dir) && file_exists( $path_dir."/$path.php" ) )
 			deleteDirectory($path_dir);
-		}
-		else unlink($path_dir.'.php');
+		elseif( file_exists( $path_dir.".php" ) )
+			unlink($path_dir.'.php');
 	}
 }
 
@@ -189,24 +186,16 @@ if(!function_exists('info_plugin')){
 		return $info;
 	}
 }
-if(!function_exists('info_plugin_update')){
-	function info_plugin_update(){	
-		$plugin_name = filter_txt( $_GET['plugin_name'] );
-		$file = filter_txt( $_GET['file'] );
-		
-		
-		$plugins = get_dir_plugins( $plugin_name . $file );
-		$info = '<div class="padding">';
-		$info.= '<div id="message_no_ani">No update found for '.$plugins['']['Name'].'</div>';
-		$info.= '</div>';
-		return $info;
-	}
-}
+
 if(!function_exists('info_plugin_update_all')){
 	function info_plugin_update_all(){	
-		$info = '<div class="padding">';
-		$info.= '<div id="message_no_ani">No update found</div>';
-		$info.= '</div>';
+		$info = '';
+		$info.= '<script type="text/javascript">
+				$(document).ready(function(){
+					getLoad(\'update_view\',\'?request&load=libs/ajax/latest.php&action=etc&type=plugin\');	
+				});	
+				</script>
+				<div id="update_view"></div>';
 		return $info;
 	}
 }

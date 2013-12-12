@@ -15,6 +15,16 @@ $reply 	= filter_int($_GET['reply']);
 $offset	= filter_int($_GET['offset']);
 ?>
 <link href="content/applications/post/style.css" rel="stylesheet" media="screen" type="text/css" />
+
+<script>
+/*<![CDATA[*/
+$(function(){
+	$('#post_meta_show').click( function(){
+		$('#post_meta_show_content').slideToggle();
+	});
+});
+/*]]>*/
+</script>
 <?php
 
 echo js_redirec_list();
@@ -28,8 +38,8 @@ if($type=='page'){
 	$add_query	='WHERE `type`="page"';
 	$type		='&type=page';
 }else{
-	$add_query	='WHERE `type`="post"';
-	$type		= '';
+	$add_query	='WHERE `type`="post" AND `approved`=1';
+	$type		= '&type=post';
 }
 
 if(!empty($act))
@@ -119,6 +129,7 @@ $content = ob_get_contents();
 ob_end_clean();
 
 $header_menu = '';
+$header_menu.= '<a href="?admin&apps=post&go=setting" class="button button3 black" style="margin-right:2px;">Pengaturan</a>';
 $header_menu.= '<a href="?admin=single&apps=post&go=add&type=post" class="button button3 l">+ Post</a><a href="?admin=single&apps=post&go=add&type=page" class="button button3 m ">+ Page</a><a href="?admin&apps=post&go=addcat" class="button button3 r">+ Topik</a>';
 $footer = '<div class="left">'.$paging->display(true).'</div>';
 $footer.= '<div class="right">Total Post: '.$total.' Article</div>';
@@ -138,6 +149,8 @@ if(isset($_POST['draf']) || isset($_POST['publish'])){
 	$title 		= sanitize( $title );
 	
 	$category 	= filter_int($_POST['category']);
+	$status_comment = filter_int($_POST['status_comment']);
+	$headline 	= filter_int($_POST['headline']);
 	$type 		= filter_txt($_POST['type']);
 	
 	if( get_option('text_editor') == 'classic' ):
@@ -159,35 +172,25 @@ if(isset($_POST['draf']) || isset($_POST['publish'])){
 	if(isset($_POST['draf'])) $status = 0;
 	else $status = 1;
 	
-	$data = compact('title','category','type','isi','thumb','tags','date','status','meta_keys','meta_desc');	
+	$data = compact('title','category','type','isi','thumb','tags','date','status','status_comment','meta_keys','meta_desc','headline');	
 	add_post($data);
 }
 ?>
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td style="width:70%"><label for="title">Judul: <span class="required">*</span></label><br /><input type="text" id="title" name="title" value="" placeholder="Judul Posting" required="required" style="width:99%;" /></td>
-      <td align="right"><label for="category">Kategori: <span class="required">*</span> </label><br />
-        <select id="category" name="category">
-           <option value="">-- Pilih --</option> 
-           <?php list_category()?>
-        </select></td>
+      <td><label for="title">Judul: <span class="required">*</span></label><br /><input type="text" id="title" name="title" value="" placeholder="Judul Posting" required style="width:98%;" /></td>
     </tr>
     <tr>
-      <td colspan="2"><label for="isi">Isi:</label><?php the_editor('','idEditor', array('editor_name' => 'isi','editor_style' => 'width:550px; height:250px;') );?></td>
+      <td><label for="isi">Isi:</label><?php the_editor('','idEditor', array('editor_name' => 'isi','editor_style' => 'width:550px; height:250px;') );?></td>
     </tr>
     <tr>
-      <td colspan="2"><label for="tags">Tags *(:</label><br /><input id="tags" type="text" name="tags" value="" style="width:98%;"/></td>
+      <td><label for="tags">Tags *(:</label><br /><input id="tags" type="text" name="tags" value="" style="width:98%;"/></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
-      <td><label for="thumb">Gambar *(:</label><br /><input id="thumb" type="file" name="thumb"></td>
-      <td align="right"><label for="thumb_desc">Keterangan Gambar *(:</label><br /><input id="thumb_desc" type="text" name="thumb_desc" value="" style="width:90%;"/></td>
-    </tr>
-    <tr>
-      <td colspan="2">*( : Jika type posting {page} option ini diabaikan<br /><span class="required">*</span> : Harus disini</td>
+      <td>*( : Jika type posting {page} option ini diabaikan<br /><span class="required">*</span> : Harus diisini</td>
     </tr>
   </table>
 </div>
@@ -196,8 +199,34 @@ $content = ob_get_contents();
 ob_end_clean();
 
 $widget_manual = array();
-$widget_manual['gadget'][] = array('title' => 'Meta Desc', 'desc' => '
-<div class="padding">
+
+if( $type != 'page' ):
+$widget_manual['gadget'][] = array('title' => 'Options', 'desc' => '
+<div class="padding" id="post_opt_show_content">
+<label for="category">Kategori: <span class="required">*</span> </label><br />
+<select id="category" name="category">
+<option value="">-- Pilih --</option> 
+'.list_category(0,true).'
+</select><br>
+<label for="thumb">Gambar *(:</label><br /><input id="thumb" type="file" name="thumb"><br>
+<label for="thumb_desc">Keterangan Gambar *(:</label><br /><input id="thumb_desc" type="text" name="thumb_desc" value="" style="width:90%;"/>
+<label for="status_comment">Terima Komentar:</label><br />
+<select id="status_comment" name="status_comment">
+<option value="0">Tidak</option> 
+<option value="1">Ya</option> 
+</select><br>
+<label for="headline">Headline:</label><br />
+<select id="headline" name="headline">
+<option value="0">Tidak</option> 
+<option value="1">Ya</option> 
+</select>
+</div>
+');
+endif;
+
+$menu_widget = '<a id="post_meta_show" href="#" class="button button2">Show</a>';
+$widget_manual['gadget'][] = array('title' => 'Meta', 'menu' => $menu_widget,'desc' => '
+<div class="padding" id="post_meta_show_content" style="display:none;">
 <label for="meta_keys">Kata kunci:</label><input type="text" id="meta_keys" name="meta_keys" value="" placeholder="Keyboard" style="width:95%;" />
 <label for="meta_desc">Keterangan:</label><textarea id="meta_desc" name="meta_desc" style="width:95%; height:100px"></textarea>
 </div>');
@@ -206,7 +235,11 @@ $header_menu = '<div class="header_menu_top">Date : <input id="date-picker" type
 $select_post = 'selected="selected"';
 if( $type == 'page' ) $select_page = 'selected="selected"';
 
+if( !$type ):
 $header_menu.= '<select name="type" style="margin-left:2px;"><option value="post" '.$select_post.'>Post</option><option value="page" '.$select_page.'>Page</option></select>';
+else:
+$header_menu.= '<input type="hidden" name="type" value="'.$type.'">';
+endif;
 
 $header_menu.= '<input type="submit" name="publish" value="Terbitkan" class="l button on green" style="margin-left:2px;"/>';
 $header_menu.= '<input type="submit" name="draf" value="Simpan di Draf" class="m button black"/>';
@@ -232,6 +265,8 @@ if(isset($_POST['update'])){
 	$title 		= filter_txt($_POST['title']);
 	$title 		= sanitize( $title );
 	$category 	= filter_int($_POST['category']);
+	$status_comment = filter_int($_POST['status_comment']);
+	$headline 	= filter_int($_POST['headline']);
 	
 	if(get_option('text_editor')=='classic')
 	$isi	 	= nl2br2($_POST['isi']);
@@ -250,28 +285,19 @@ if(isset($_POST['update'])){
 	
 	$approved 	= filter_int($_POST['approved']);
 	
-	$data = compact('title','type','category','isi','thumb','thumb_desc','tags','date','meta_keys','meta_desc','approved');
+	$data = compact('title','type','category','status_comment','isi','thumb','thumb_desc','tags','date','meta_keys','meta_desc','approved','headline');
 	update_post($data,$id); 
 }
 
 ?>
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td style="width:70%"><label for="title">Judul: <span class="required">*</span></label><br /><input type="text" id="title" name="title" value="<?php echo sanitize_title($row['title'])?>" placeholder="Judul Posting" required="required" style="width:99%;" /></td>
-      <td align="right">
-      <?php if( $type != 'page' ):?>
-      <label for="category">Kategori: <span class="required">*</span> </label><br />
-        <select id="category" name="category">
-           <option value="">-- Pilih --</option> 
-           <?php list_category( $row['post_topic'] )?>
-        </select>
-        <?php endif;?>
-        </td>
+      <td colspan="2"><label for="title">Judul: <span class="required">*</span></label><br /><input type="text" id="title" name="title" value="<?php echo sanitize_title($row['title'])?>" placeholder="Judul Posting" required style="width:98%;" /></td>
     </tr>
     <tr>
       <td colspan="2"><label for="isi">Isi:</label><?php the_editor( sanitize($row['content']) ,'idEditor', array('editor_name' => 'isi','editor_style' => 'width:550px; height:420px;') );?></td>
     </tr>
-<?php if( $type != 'page' ):?>
+<?php if( $type == 'post' ):?>
     <tr>
       <td colspan="2"><label for="tags">Tags: *(</label><br /><input id="tags" type="text" name="tags" style="width:98%;" value="<?php echo $row['tags']?>"/></td>
     </tr>
@@ -284,7 +310,7 @@ if(isset($_POST['update'])){
       <td></td>
       <td></td>
     </tr>
-<?php if( $type != 'page' ):?>
+<?php if( $type == 'post' ):?>
     <tr>
       <td colspan="2">*( : Jika type posting {page} option ini diabaikan<br /><span class="required">*</span> : Harus disini</td>
     </tr>
@@ -298,20 +324,64 @@ $content = ob_get_contents();
 ob_end_clean();
 
 $widget_manual = array();
-$widget_meta = ' 
-<div class="padding">
+
+if( $type == 'post' ):
+if( $row['status_comment'] > 0 ){
+$status_comment = '<option value="0">Ya</option>';
+$status_comment.= '<option value="1" selected="selected">Tidak</option>';
+}else{
+$status_comment = '<option value="0" selected="selected">Ya</option>';
+$status_comment.= '<option value="1">Tidak</option>';
+}
+
+if( $row['headline'] > 0 ){
+$headline = '<option value="0">Ya</option>';
+$headline.= '<option value="1" selected="selected">Tidak</option>';
+}else{
+$headline = '<option value="0" selected="selected">Ya</option>';
+$headline.= '<option value="1">Tidak</option>';
+}
+
+if( $row['approved'] > 0 ){
+$approved = '<option value="0">Panding</option>';
+$approved.= '<option value="1" selected="selected">Approved</option>';
+}else{
+$approved = '<option value="0" selected="selected">Panding</option>';
+$approved.= '<option value="1">Approved</option>';
+}
+
+$widget_manual['gadget'][] = array('title' => 'Options', 'desc' => '
+<div class="padding" id="post_opt_show_content">
+<label for="category">Status: <span class="required">*</span> </label><br />
+<select name="approved">'.$approved.'</select><br />
+<label for="category">Kategori: <span class="required">*</span> </label><br />
+<select id="category" name="category">
+<option value="">-- Pilih --</option> 
+'.list_category( $row['post_topic'],true ).'
+</select><br>
+<label for="status_comment">Terima Komentar:</label><br />
+<select id="status_comment" name="status_comment">'.$status_comment.'</select><br>
+<label for="headline">Headline:</label><br />
+<select id="headline" name="headline">'.$headline.'</select>
+</div>
+');
+endif;
+
+$widget_meta = '
+<div class="padding" id="post_meta_show_content" style="display:none;">
 <label for="meta_keys">Kata kunci:</label><input type="text" id="meta_keys" name="meta_keys" value="'.$row['meta_keys'].'" placeholder="Keyboard" style="width:95%;" />
 <label for="meta_desc">Keterangan:</label><textarea id="meta_desc" name="meta_desc" style="width:95%; height:100px">'.$row['meta_desc'].'</textarea>
 </div>';
+$menu_widget = '<a id="post_meta_show" href="#" class="button button2">Show</a>';
 
 if( $type != 'page' ) $widget_metax = $widget_meta;
 else $widget_metax = '<div class="padding"><p id="message_no_ani">No meta needed</p></div>';
 
-$widget_manual['gadget'][] = array('title' => 'Meta Desc', 'desc' => $widget_metax);
+$widget_manual['gadget'][] = array('title' => 'Meta', 'desc' => $widget_metax,'menu' => $menu_widget);
 
 if( $type != 'page' ):
 $widget_manual['gadget'][] = array('title' => 'Thumbnail', 'desc' => ' 
-<center><img style="max-width:100%;" src="?request&load=libs/timthumb.php&src='.content_url('/uploads/post/'.$row['thumb']).'&w=230&h=230&zc=1"></center>');
+<center><img style="max-width:100%;" src="?request&load=libs/timthumb.php&src='.content_url('/uploads/post/'.$row['thumb']).'&w=230&h=130&zc=1"></center>');
 endif;
 
 $header_menu = '<div class="header_menu_top">';
@@ -320,17 +390,7 @@ $tanggal = strtotime($row['date_post']);
 $header_menu.= 'Date : <input id="date-picker" type="text" name="date" value="'.date('Y-m-d',$tanggal).'">';
 endif;
 
-if( !empty($from) ):
-$header_menu.= '<select name="approved" style="margin-left:2px;">';
-if( $row['approved'] > 0 ){
-$header_menu.= '<option value="0">Panding</option>';
-$header_menu.= '<option value="1" selected="selected">Approved</option>';
-}else{
-$header_menu.= '<option value="0" selected="selected">Panding</option>';
-$header_menu.= '<option value="1">Approved</option>';
-}
-$header_menu.= '</select>';
-else:
+if( empty($from) ):
 $header_menu.= '<input type="hidden" name="approved" value="'.$row['approved'].'">';
 endif;
 
@@ -536,11 +596,70 @@ if( isset($_POST['submitDelete']) ) {
 	}
 }
 
-if( $act == 'view' ){
+if( isset($_POST['submitApproved']) ) {
+	$commentar_id = (array) $_POST['commentar_id'];
+		
+	foreach($commentar_id as $key){
+		approved_commentar($key); 
+		add_activity('post_comment',"menyetujui commentar $key", 'comment');
+	}
+}
+
+if( $act == 'wait' ){
+	
+$warna = '';
+$checkbox_id 	= 0;
+$sql_comment = $db->select( 'post_comment' , array('approved' => 0), 'ORDER BY date DESC LIMIT 30' );
+?>
+<div id="list-comment">
+<table id=table cellpadding="0" cellspacing="0" widtd="100%">
+    <tr class="head" style="border-bottom:0;">
+		<td style="text-align:left; width:1%; vertical-align:middle; padding-left:5px"><input type="checkbox" onClick="checkbox_all()" id="set_checkbox_all"></td>
+		<td style="text-align:left; width:25%">By</td>
+		<td style="text-align:left">Comment</td>
+	</tr>
+<?php
+while( $row_comment = $db->fetch_obj( $sql_comment ) ){
+$warna 	= empty ($warna) ? ' style="background:#f9f9f9"' : '';
+
+$sql_post = $db->select( 'post' , array('id' => $row_comment->post_id) );
+$row_post = $db->fetch_obj( $sql_post );
+?>
+	<tr class="isi" <?php echo $warna;?>>
+	  <td style="text-align:left; vertical-align:middle; padding-left:5px"><input type="checkbox" name="commentar_id[]" value="<?php echo $row_comment->comment_id?>" id="checkbox_id_<?php echo $checkbox_id;?>" /></td>
+	  <td style="text-align:left;">
+      <div style="height:auto; margin:2px; margin-right:5px; padding:2px; padding-top:10px;">
+      <img src="<?php echo get_gravatar($row_comment->email);?>" style="width:40px; height:40px; border:1px solid #ddd;" class="radius">
+      </div>  
+      <?php echo $row_comment->author?>  
+      </td>
+	  <td>
+      <strong><?php echo $row_post->title?></strong>
+      <p><?php echo $row_comment->comment?></p>
+      </td>
+    </tr>
+<?php
+$checkbox_id++;
+}
+?>
+</table>
+<input type="hidden" id="checkbox_total" value="<?php echo $checkbox_id?>" name="checkbox_total">
+</div>
+
+<?php
+
+$header_title = 'Approved Comment Manager';
+$header_menu = '';
+$header_menu.= '<div class="header_menu_top">';
+$header_menu.= '<input type="submit" name="submitApproved" class="primary button on green" value="Approve the selected" id="checkbox_go">';
+$header_menu.= '</div>';
+$header_menu.= '<a href="?admin&apps=post&go=comment" class="button button3"><span class="icon_head back">&laquo; Back</span></a>';
+	
+}elseif( $act == 'view' ){
 
 $color			= '';
 $comment_no		= 0;
-$qry_comment	= $db->select("post_comment",array('comment_id'=>$id,'comment_parent'=>0)); 
+$qry_comment	= $db->select("post_comment",array('comment_id'=>$id,'comment_parent'=>0,'approved'=>1)); 
 $data			= $db->fetch_array($qry_comment);
 	
 $no_comment 	= filter_int( $data['comment_id'] );
@@ -590,8 +709,8 @@ if( isset($_POST['submit']) ){
 <div class="comment-reply-bg" id="respon">
 <div class="comment-img comment-reply-img" style="margin-left:15px;"><img src="<?php echo get_gravatar( get_option('admin_email') );?>" /></div>
 <div class="comment-text comment-reply-text">
-<textarea cols="50" rows="5" name="comment" class="grow" style="height:15px; width:95%"></textarea>
-<input type="submit" name="submit" value="Balas" class="l button blue" /><input type="reset" name="Reset" value="Bersihkan" class="r button white" />
+<textarea cols="50" rows="5" name="comment" class="grow" style="height:15px; width:95%"></textarea><br />
+<input type="submit" name="submit" value="Kirim" class="l button blue" /><input type="reset" name="Reset" value="Bersihkan" class="r button white" />
 </div>
 </div>
 <?php endif;?>
@@ -601,7 +720,7 @@ if( isset($_POST['submit']) ){
 
 $color = '';
 $checkbox_id = 0;
-$q2					= $db->select("post_comment",array('comment_parent'=>$id),'ORDER BY date DESC LIMIT 30'); 
+$q2					= $db->select("post_comment",array('comment_parent'=>$id,'approved'=>1),'ORDER BY date DESC LIMIT 30'); 
 while ($data2		= $db->fetch_array($q2)) {
 $color 	= empty ($color) ? ' style="background:#fff"' : '';
 ?>
@@ -643,7 +762,7 @@ $header_menu.= '<a href="?admin&apps=post&go=comment" class="button button3" sty
 
 $warna = '';
 $checkbox_id 	= 0;
-$sql_comment = $db->select( 'post_comment' , array('comment_parent' => 0), 'ORDER BY date DESC LIMIT 30' );
+$sql_comment = $db->select( 'post_comment' , array('comment_parent' => 0,'approved'=>1), 'ORDER BY date DESC LIMIT 30' );
 ?>
 <div id="list-comment">
 <table id=table cellpadding="0" cellspacing="0" widtd="100%">
@@ -661,23 +780,21 @@ $row_post = $db->fetch_obj( $sql_post );
 ?>
 	<tr class="isi" <?php echo $warna;?>>
 	  <td style="text-align:left; vertical-align:middle; padding-left:5px"><input type="checkbox" name="commentar_id[]" value="<?php echo $row_comment->comment_id?>" id="checkbox_id_<?php echo $checkbox_id;?>" /></td>
-	  <td>
-      <div style="float:left; width:42px; height:100%; margin:2px; margin-right:5px; padding:2px; padding-top:10px;">
+	  <td style="text-align:left;">
+      <div style="height:auto; margin:2px; margin-right:5px; padding:2px; padding-top:10px;">
       <img src="<?php echo get_gravatar($row_comment->email);?>" style="width:40px; height:40px; border:1px solid #ddd;" class="radius">
-      </div>
-      <div style="margin:0; margin-top:3px; margin-left:50px;">
-      <?php echo $row_comment->author?><br />
-      <a href="?admin&apps=post&go=comment&act=view&id=<?php echo $row_comment->comment_id?>" class="button button4 green" style="margin-top:3px;">Lihat</a><a href="?admin&apps=post&go=comment&act=view&reply=1&id=<?php echo $row_comment->comment_id?>" class="button button4 blue" style="margin-top:3px;">Balas</a>
-	  </div>
-      <div style="clear:both"></div>
+      </div>  
+      <?php echo $row_comment->author?>  
       </td>
 	  <td>
       <strong><?php echo $row_post->title?></strong>
       <p><?php echo $row_comment->comment?></p>
-      <div style="clear:both"></div>
-      <a href="mailto:<?php echo $row_comment->email?>" title="Visit autdor homepage">Send a Mail</a> &bull; <?php echo  time_stamp($row_comment->time)?> 
-      <div style="clear:both"></div>
       </td>
+    </tr>
+	<tr class="isi" <?php echo $warna;?>>
+	  <td style="text-align:left; vertical-align:middle; padding-left:5px;border-top:0;">&nbsp;</td>
+	  <td style="text-align:left;alignment-adjust:central;border-top:0;"><a href="?admin&apps=post&go=comment&act=view&id=<?php echo $row_comment->comment_id?>" class="button button4 green l" style="margin-top:3px;">Lihat</a><a href="?admin&apps=post&go=comment&act=view&reply=1&id=<?php echo $row_comment->comment_id?>" class="button button4 blue r" style="margin-top:3px;">Balas</a></td>
+	  <td style="border-top:0;"><a href="mailto:<?php echo $row_comment->email?>" title="Visit autdor homepage">Mail</a> &bull; <?php echo  time_stamp($row_comment->time)?></td>
     </tr>
 <?php
 $checkbox_id++;
@@ -703,6 +820,94 @@ ob_end_clean();
 $form = 'action="" method="post" enctype="multipart/form-data"';
 add_templates_manage( $content, $header_title, $header_menu, null, $form );
 
+break;
+case 'setting':
+ob_start();
+?>
+<div class="padding">
+<?php
+if(isset($_POST['submit'])){	
+	$post_comment = (string)$_POST['post_comment'];
+	if( checked_option( 'post_comment' ) ) set_option( 'post_comment', $post_comment );
+	else add_option( 'post_comment', $post_comment );
+	
+	
+	$post_comment_filter = (int)$_POST['post_comment_filter'];
+	if( checked_option( 'post_comment_filter' ) ) set_option( 'post_comment_filter', $post_comment_filter );
+	else add_option( 'post_comment_filter', $post_comment_filter );
+	
+	add_activity('post',"Merubah setting post", 'post');	
+	echo "<div id=\"success\">Berhasil merubah pengaturan post</div>";
+    echo "<meta http-equiv=\"refresh\" content=\"0;url=?admin&apps=post\" />";
+}
+?>
+  <table width="100%" cellpadding="4">
+    <tbody>
+    <tr>
+      <td>Post Comment Filter</td>
+      <td><strong>:</strong></td>
+      <td>
+      <select name="post_comment_filter">
+<?php
+if(get_option('post_comment_filter')==1){
+	echo '	
+      <option value="0">Unaproved</option>
+      <option value="1" selected="selected">Approved</option>
+	';
+}else{	
+	echo '	
+      <option value="0" selected="selected">Unapproved</option>
+      <option value="1">Approved</option>
+	';
+}
+?>
+      </select>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Post Comment Form</td>
+      <td><strong>:</strong></td>
+      <td>
+      <select name="post_comment">
+<?php
+if(get_option('post_comment')==1){
+	echo '	
+      <option value="0">Hide</option>
+      <option value="1" selected="selected">Show</option>
+	';
+}else{	
+	echo '	
+      <option value="0" selected="selected">Hide</option>
+      <option value="1">Show</option>
+	';
+}
+?>
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+      </td>
+    </tr>
+    <tbody>
+</table>
+</div>
+<?php
+$header_title = 'Setting Post Manager';
+$header_menu = '';
+$header_menu.= '<div class="header_menu_top">';
+$header_menu.= '<input type="submit" name="submit" class="button on l blue" value="Save & Update"><input type="reset" class="button r" name="Reset" value="Reset">';
+$header_menu.= '</div>';
+$header_menu.= '<a href="?admin&apps=post&go=comment" class="button button3"><span class="icon_head back">&laquo; Back</span></a>';
+
+$content = ob_get_contents();
+ob_end_clean();
+
+$form = 'action="" method="post" enctype="multipart/form-data"';
+add_templates_manage( $content, $header_title, $header_menu, null, $form );
 break;
 }
 ?>

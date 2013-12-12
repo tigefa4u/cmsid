@@ -21,6 +21,7 @@ add_action( 'the_head_login', 'query_security' );
 add_action( 'the_head_admin', 'query_security' );
 
 add_action( 'the_head_admin', 'loaded_component' );
+add_action( 'the_head_request', 'loaded_component');
 add_action( 'the_head', 'base_js',1);
 
 add_action( 'the_head_admin', 'aside_default' );

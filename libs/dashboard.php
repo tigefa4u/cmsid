@@ -25,6 +25,8 @@ function dashboard() {
 			$width = 'width:100%;';
 			$hide2 = $hide3 = $hide4 = 'display:none;';
 	}
+	do_action('the_notif');
+	
 	echo '<div id="dashboard-widgets" class="metabox-holder">';
 	echo "\t<div class='column column0' id='column0' style='$width'>\n";
 	do_meta_boxes( 'normal', '' );
@@ -32,34 +34,34 @@ function dashboard() {
 	echo "\t</div><div class='column column1' id='column1' style='{$hide2}$width'>\n";
 	do_meta_boxes( 'side', '' );
 	
-	echo '</div></div>';
+	echo '</div>';
+	echo '<div style="clear:both;"></div>';
+	echo '</div>';
 }
-
 	
 function dashboard_update_info(){ 
-	global $version_system, $version_project, $system_build;
+	global $version_system, $version_project, $version_beta, $version_build;
 	
 	$dp_content = '<div class="padding">';
-    $dp_content.= '<div id="updater"></div>';
+    $dp_content.= '<div id="updater" style="overflow:auto; height:250px;"></div>';
 	$dp_content.= '</div>';
     
     $setting = array(
         'dp_id' => 'updater_pop',
         'dp_title' => 'Pembaruan Terbaru',
         'dp_content' => $dp_content,
-		'width' => 450,
+		'width' => 500
     );
     add_dialog_popup( $setting );
     ?>	
 	<div class="padding">
-	<div class="left" style="margin-right:5px; height:100%"><img src="libs/img/icon-latest-upgrade.png"></div>
-	<div style="margin-left:20px">Versi Situs : <?php echo $version_system . ' '.$version_project.' build '.$system_build;?></div><br />
-	<p style="margin-left:42px;">Pastikan versi yang anda pakai adalah versi terbaru, agar situs anda aman dan mengurangi kemungkinan masalah yang ada pada situs anda.</p>
-	<div style="margin-left:42px; margin-top:5px"><a href="javascript:void(0);"  onclick="javascript:$('#dialog_updater_pop').showX()" class="button popupCore">Cek Pembaruan Terbaru</a></div>
+	<p>Versi system anda <?php echo $version_system . ' '.$version_project.' '.$version_beta.' build '.$version_build;?>, pastikan versi yang anda pakai adalah versi terbaru, agar situs anda aman dan mengurangi kemungkinan masalah yang ada pada situs anda.</p>
+	<div style="margin-top:5px"><a href="javascript:void(0);"  onclick="javascript:$('#dialog_updater_pop').showX()" class="button popupCore black icon-latest-upgrade">Cek Pembaruan Terbaru</a></div>
 	<div style="clear:both"></div>
 	<br /></div>
  <?php
 }
+
 
 function dashboard_feed_news(){ 
 global $db;
@@ -153,7 +155,7 @@ if( $display->{'author'} == 1 ) $checked_author = 'checked="checked"';
 if( $display->{'date'} == 1 ) $checked_date = 'checked="checked"';
 
 ?>
-<div style="clear:both"></div>
+<div style="clear:both"></div><br />
 <label for="feed_list">Berapa banyak yang ditampilkan</label> 
 <select id="feed_list" name="display_feed_limit">
 <?php 
@@ -256,7 +258,7 @@ if(isset($_POST['post_publish']) || isset($_POST['post_draf'])){
 <form action="" method="post">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td colspan="2"><input type="text" id="judul" name="title" placeholder="Judul Posting" required="required" style="width:97%;" /></td>
+      <td colspan="2"><input type="text" id="judul" name="title" placeholder="Judul Posting" required style="width:97%;" /></td>
     </tr>
     <tr>
       <td colspan="2"><?php the_editor('','editor_quick_post', array('editor_name' => 'isi','editor_style' => 'height:100px;width:97%;'), array( 'toolbar' => 'simple', 'css' => 'wym-simple.css') );?></td>
@@ -270,7 +272,7 @@ if(isset($_POST['post_publish']) || isset($_POST['post_draf'])){
       <td width="45%" align="right"><input id="tags" type="text" name="tags" placeholder="Tag ex: news,top,etc." /></td>
     </tr>
     <tr>
-      <td colspan="2"><div class="left"><input type="submit" name="post_draf" value="Save Draf" class="button l"/><input type="reset" value="Reset" class="button r"/></div><div class="right"><input type="submit" name="post_publish" value="Publish" class="button on"/></div></td>
+      <td colspan="2"><div class="left"><input type="submit" name="post_draf" value="Save Draf" class="button l black"/><input type="reset" value="Reset" class="button r"/></div><div class="right"><input type="submit" name="post_publish" value="Publish" class="button on blue"/></div></td>
     </tr>
   </table>
 
@@ -328,12 +330,12 @@ var base_url = '<?php echo site_url();?>';
 
 $(document).ready(function(){
 
-$(".popupCore").click(function() {
-	var update_url = '?request&load=libs/ajax/update-core.php';
+$(".popupCore").click(function() {		
+	var update_url = '?request&load=libs/ajax/latest.php';
 	getLoad('updater',update_url);	
 	setInterval(function() {
 		getLoad('updater',update_url);
-	}, 30000); // 30 second
+	}, 90000); // 30 second
 });	
 getLoad('recent_reg_view','?request&load=libs/ajax/recent.php');
 getLoad('feed_news_view','?request&load=libs/ajax/feed.php');
@@ -410,7 +412,7 @@ function dashboard_setup() {
 	global $current_screen;
 	$current_screen->render_screen_meta();
 	
-	add_dashboard_widget( 'dashboard_update_info', 'Update Information', 'dashboard_update_info' );
+	add_dashboard_widget( 'dashboard_update_info', 'Information', 'dashboard_update_info' );
 	add_dashboard_widget( 'dashboard_quick_post', 'Quick Post', 'dashboard_quick_post' );
 	add_dashboard_widget( 'dashboard_recent_registration', 'Recent Registration', 'dashboard_recent_registration', true );
 	add_dashboard_widget( 'dashboard_feed_news', 'Feed News', 'dashboard_feed_news', true );

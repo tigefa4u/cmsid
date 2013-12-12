@@ -125,6 +125,7 @@ if( $data->view == 'page-full' ){?>
 	  	<h4 class="bg"><?php echo $data->title?></h4>
         <div class="border"><?php echo $data->posted?></div>
 	  	<div class="border">
+        	<div class="post-ilustrasi" style="width:200px; float:left;"><img src="<?php echo site_url('/?request&load=libs/timthumb.php').'&src='.content_url('/uploads/post/'.$data->thumb); ?>&h=150&w=200&zc=1" alt=""><div style="clear:both"></div><?php echo $data->thumb_desc?></div>
 	    	<?php echo $data->content?>
       		<div class="clear"></div>
 	    	<div class="tags">
@@ -154,7 +155,7 @@ if( $data->view == 'page-full' ){?>
     <?php if( file_exists('content/uploads/post/'.$content[thumb]) && !empty($content[thumb]) ):?>
 	<div class="thumb">
     <a href="#" rel="bookmark" class="img-url">
-    <img src="<?php echo $content[thumb]; ?>&h=100&w=100&zc=1" alt="">
+    <img src="<?php echo site_url('/?request&load=libs/timthumb.php').'&src='.content_url('/uploads/post/'.$content[thumb]); ?>&h=100&w=100&zc=1" alt="">
     </a>
     </div>
     <?php endif;?>

@@ -16,6 +16,14 @@ a span.icon_head {
 	
 }
 
+
+a span.icon_head.home {
+	background-image:url(../img/icon-nav-menu.png);
+	background-position:-3px 0!important;
+	height:36px;
+	width:22px;
+}
+
 a span.icon_head.back {
 	background-image:url(../img/icon_back.png);
 }

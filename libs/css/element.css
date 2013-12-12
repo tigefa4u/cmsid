@@ -1,17 +1,6 @@
-@font-face {
-  font-family: 'LG';
-  src: url(../fonts/lucida-grande.ttf);
-}
+@import url("../fonts/lucida-grande.css");
+@import url("../fonts/lucida-grande-bold-webfont.css");
 
-@font-face {
-  font-family: 'LGB';
-  src: url(../fonts/lucida-grande-bold-webfont.ttf);
-}
-
-@font-face {
-  font-family: Prociono;
-  src: url(../fonts/Prociono-Regular-webfont.ttf);
-}
 body {
 	/*
 	font-family: 'Lucida Grande','Segoe UI', Verdana, Arial, Helvetica, sans-serif;
@@ -22,6 +11,7 @@ body {
 }
 p{font-family: "LG";}
 strong{font-family: "LGB";}
+b{font-family: "LGB";}
 
 /* using local fonts? make sure to read up on Paul Irish's 
 	Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ */
@@ -40,6 +30,6 @@ a:hover{color:#4284B0}
 a:link {-webkit-tap-highlight-color: #fcd700;} 
 
 ins {background-color: #fcd700; color: #000; text-decoration: none;}
-mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
+mark {background-color: #fcd700; color: #000; font-style: italic; font-weight:normal;}
 
 img {behavior: url(../js/iepngfix.htc) !important}

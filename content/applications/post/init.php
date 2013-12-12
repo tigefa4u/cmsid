@@ -29,9 +29,13 @@ function get_widget(){
 	);
 	
 	if( $_GET['go'] != 'comment' )
-	$gadget[] = array('title' => 'Waiting Approved','desc' => article_approved() );	
+	$gadget[] = array('title' => 'Waiting Post Approved','desc' => article_approved() );	
 	
-	$gadget[] = array('title' => 'Latest Comment','desc' => article_comment() );	
+	$menu_widget = '';
+	if( $_GET['act'] != 'wait' )
+	$menu_widget.= '<a href="?admin&apps=post&go=comment&act=wait" class="button button2 red">Lihat yg tertunda</a>';
+	
+	$gadget[] = array('title' => 'Latest Comment','desc' => article_comment(),'menu' => $menu_widget );	
 	
 	$widget = array(
 		'menu'		=> $actions,
@@ -50,7 +54,7 @@ function article_approved(){
 	$sql_post = $db->select( 'post' , array( 'type' => 'post', 'approved' => '0' ), 'ORDER BY date_post DESC LIMIT 30' );
 	
 	if( $db->num($sql_post) < 1 )
-	$post .= '<div class="padding"><div id="message_no_ani">No article in comming</div></div>';
+	$post .= '<div class="padding"><div id="message_no_ani">No article in comming to approved</div></div>';
 	
 	while( $row_post = $db->fetch_obj( $sql_post ) ){
 		$warna 	= empty ($warna) ? ' style="background:#f9f9f9"' : '';
@@ -58,15 +62,17 @@ function article_approved(){
 		$data_user 	= array( 'user_login' => $row_post->user_login );
 		$field 		= $login->data( $data_user );
 		
-		if( esc_sql($field->user_level) == 'user' ):
+		//if( esc_sql($field->user_level) == 'user' ):
 		
 		$post .= '<li'.$warna.'><img src="'.get_gravatar($field->user_email).'" style="float:left; width:40px; height:40px; margin-right:5px;" class="radius">'.$row_post->title;
+		$post .= '<div style="clear:both; padding-bottom:5px;"></div>';
+		$post .= '<div style="background:#fff;">oleh:'.$field->user_login.', '.date_stamp($row_post->date_post).'</div>';
 		$post .= '<div style="clear:both; padding-bottom:5px;"></div>';
 		$post .= '<div style="float:left; width:60%;"><a href="?admin&apps=post&type=post&act=approv&pub=yes&id='.$row_post->id.'" class="button button2 on l">Setuju</a><a href="?admin&apps=post&act=del&id='.$row_post->id.'" class="button button2 r" onclick="return confirm(\'Are You sure delete this post?\')">Hapus</a></div>';
 		$post .= '<div style="float:right; width:19%;"><a href="?admin=single&apps=post&go=edit&type=post&id='.$row_post->id.'&from='.$row_post->user_login .'" class="button button2">Ubah</a></div>';
 		$post .= '<div style="clear:both; padding-bottom:5px;"></div></li>';
 		
-		endif;
+		//endif;
 	}
 	$post .= '<ul>';
 	
@@ -82,8 +88,17 @@ function article_comment(){
 	
 	if( $_GET['go'] == 'comment' ){ 
 		$style = 'style="max-height:400px;"';
-		$add_query = 'WHERE `comment_parent` !=0';
+		$add_query.= '`comment_parent` !=0';
 	}
+	
+	//if( $_GET['act'] == 'wait' ){
+		//$add_query.= ' AND approved=0';
+	//}else{
+		$add_query.= ' AND approved=1';
+	//}
+	
+	if( $add_query )
+	$add_query = "WHERE $add_query";
 	
 	$comment 	= '<ul class="sidemenu" '.$style.'>';
 	$sql_comment = $db->query( "SELECT * FROM $db->post_comment $add_query ORDER BY date DESC LIMIT 30" );
@@ -156,16 +171,21 @@ if(!function_exists('view_post')){
 }
 
 if(!function_exists('list_category')){
-	function list_category($id = null ){
+	function list_category($id = null, $ret = false ){
 		global $db;
+		
+		$retval = '';
 		$q		    = $db->select("post_topic");
 		while($row 	= $db->fetch_array($q)){
 			
 			$selected = '';
 			if(!empty($id) && $row['id'] == $id) $selected =  'selected="selected"';
 			
-			echo '<option value="'.$row['id'].'" '.$selected.'>'.$row['topic'].'</option>'."\n";
+			$retval .= '<option value="'.$row['id'].'" '.$selected.'>'.$row['topic'].'</option>'."\n";
 		}
+		
+		if( $ret ) return $retval;
+		else echo $retval;
 	}
 }
 
@@ -192,8 +212,8 @@ if(!function_exists('add_post')){
 			if( $thumb ){
 				$thumb		= hash_image( $thumb );
 				upload_img_post($thumb,'post/',650,120);
-				$save_post 	= save_post($data);
 			}
+			$save_post 	= save_post($data);
 			
 			if( $save_post ) {
 				add_activity('post',"menambah posting baru berjudul ' $title ' ", 'post');
@@ -219,6 +239,8 @@ if(!function_exists('save_post')){
 		$title 		= esc_sql($title);
 		$type 		= esc_sql($type);
 		$post_topic	= esc_sql($category);
+		$status_comment	= esc_sql($status_comment);
+		$headline	= esc_sql($headline);
 		$tags 		= esc_sql($tags);
 		$content	= esc_sql($isi);
 		$date_post	= esc_sql($date);
@@ -236,7 +258,7 @@ if(!function_exists('save_post')){
 		$row 		= $login->data( compact('user_login') );
 		$mail		= esc_sql($row->user_email);
 		
-		$data = compact('user_login','title','sefttitle','post_topic','mail','type','status','content','thumb','tags','date_post','meta_keys','meta_desc');		
+		$data = compact('user_login','title','sefttitle','post_topic','mail','type','status','status_comment','content','thumb','tags','date_post','meta_keys','meta_desc','headline');		
 		return $db->insert('post',$data);
 	}
 }
@@ -300,6 +322,8 @@ if(!function_exists('update_save_post')){
 		
 		$title 		= esc_sql($title);
 		$post_topic	= esc_sql($category);
+		$status_comment	= esc_sql($status_comment);
+		$headline	= esc_sql($headline);
 		$tags 		= esc_sql($tags);
 		$content	= esc_sql($isi);
 		$date_post	= esc_sql($date);
@@ -327,7 +351,7 @@ if(!function_exists('update_save_post')){
 		$sefttitle	= esc_sql($seo->judul($title));
 		$user_login = esc_sql($login->exist_value('username'));
 		
-		$data = compact('user_login','title','sefttitle','post_topic','content','thumb','thumb_desc','tags','date_post','meta_keys','meta_desc','approved');
+		$data = compact('user_login','title','sefttitle','post_topic','content','thumb','thumb_desc','tags','date_post','meta_keys','meta_desc','approved','status_comment','headline');
 		return $db->update('post',$data, compact('id') );
 	}
 }
@@ -395,6 +419,26 @@ if(!function_exists('delete_commentar')){
 			redirect( '?admin&apps=post&go=comment' );
 		else
 			redirect( '?' . $_SERVER['QUERY_STRING'] );
+	}
+}
+
+if(!function_exists('approved_commentar')){
+	function approved_commentar($id){
+		global $db;
+		
+		$where = array('comment_id' => $id);
+		
+		$q = $db->select("post_comment", $where );
+		$r = $db->fetch_array($q);
+		
+		if( $r['comment_parent'] == 0 && $r['comment_id'] == $id )
+		$db->update("post_comment", array('approved' => 1), array('comment_parent' => $id) );
+		
+		$db->update("post_comment", array('approved' => 1), $where );
+		echo '<div class="padding">';
+		echo '<div id="success"><strong>SUCCESS</strong>: Commentar berhasil di setujui</div>';
+		echo '</div>';
+		echo '<meta http-equiv="refresh" content="0;url=?admin&apps=post&go=comment&act=wait" />';
 	}
 }
 

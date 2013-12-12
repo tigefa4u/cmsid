@@ -29,10 +29,6 @@ class Widgets {
 	}
 
 	function Widgets( $id_base = false, $name, $widget_options = array() ) {
-		Widgets::__construct( $id_base, $name, $widget_options );
-	}
-
-	function __construct( $id_base = false, $name, $widget_options = array() ) {
 		$this->id_base = empty($id_base) ? preg_replace( '/()?widget_/', '', strtolower(get_class($this)) ) : strtolower($id_base);
 		$this->name = $name;
 		$this->option_name = 'widget_' . $this->id_base;
@@ -48,7 +44,7 @@ class Widgets {
 	}
 
 	function display_callback( $args ) {
-		$this->widget($args);
+		$this->widget($args); 
 	}
 }
 

@@ -57,28 +57,28 @@ RTOOLBAR['a77a'] =
 			 	title: RLANG.header1,			 
 			 	exec: 'formatblock',   
 			 	param: '<h1>',			 	
-			 	style: 'font-size: 18px; line-height: 20px; font-weight: bold;'
+			 	style: 'font-size: 18px; line-height: 20px; font-weight:normal;'
 			 },
 			 h2:
 			 {
 			 	title: RLANG.header2,			 
 			 	exec: 'formatblock',   
 			 	param: '<h2>',			 	
-			 	style: 'font-size: 16px; line-height: 20px; font-weight: bold;'
+			 	style: 'font-size: 16px; line-height: 20px; font-weight:normal;'
 			 },
 			 h3:
 			 {
 			 	title: RLANG.header3,			 
 			 	exec: 'formatblock', 
 			 	param: '<h3>',			 	  
-			 	style: 'font-size: 14px; line-height: 20px;  font-weight: bold;'
+			 	style: 'font-size: 14px; line-height: 20px;  font-weight:normal;'
 			 },		
 			 h4:
 			 {
 			 	title: RLANG.header4,			 
 			 	exec: 'formatblock', 
 			 	param: '<h3>',			 	  
-			 	style: 'font-size: 12px; line-height: 20px;  font-weight: bold;'
+			 	style: 'font-size: 12px; line-height: 20px;  font-weight:normal;'
 			 }					 														
 		}
 	},	

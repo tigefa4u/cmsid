@@ -11,7 +11,7 @@ if( !isset( $iLoad ) ){
 	session_start();
 	
 	if ((function_exists('ob_gzhandler')) && (isset($_SERVER['HTTP_ACCEPT_ENCODING']))):
-	//deteksi encoding yg didukung browser
+		//deteksi encoding yg didukung browser
 		if (preg_match("/gzip/", strtolower($_SERVER['HTTP_ACCEPT_ENCODING'])))
 			ob_start("ob_gzhandler");
 		
@@ -29,6 +29,8 @@ if( !isset( $iLoad ) ){
 	/** menentukan libs berdasarkan direktori libs*/
 	define( 'libs', 'libs' );
 	
+	/** menghandle error*/
+	require_once( abs_path . libs . '/handle.php' );	
 	/** memanggil kebutuhan system dan themes*/
 	require_once( abs_path . libs . '/required.php' );
 	

@@ -138,16 +138,6 @@ final class Screen {
 
 	private function __construct() {}
 
-	static function add_old_compat_help( $screen, $help ) {
-		self::$_old_compat_help = $help;
-	}
-
-	function set_parentage( $parent_file ) {
-		$this->parent_file = $parent_file;
-		list( $this->parent_base ) = explode( '?', $parent_file );
-		$this->parent_base = str_replace( '.php', '', $this->parent_base );
-	}
-
 	public function add_option( $option, $args = array() ) {
 		$this->_options[ $option ] = $args;
 	}

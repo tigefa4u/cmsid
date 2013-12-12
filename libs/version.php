@@ -5,14 +5,18 @@
  */
 if(!defined('_iEXEC')) exit;
 
-$version_system		= '2.2.0';
+$version_system			= '2.2.0.1.1';//1.0.0-9.0.0
 
-$system_build		= '0.3.59';
+$version_build			= '1.1';//1.0-9.0
 
-$version_project	= 'beta 2';
+$version_project		= 'stable'; //stable|beta
 
-$version_php		= '5.2.4';
+//$version_beta			= ''; //1-9
 
-$version_mysql		= '5.0';
+$version_php			= '5.2.4';
 
-$api_url			= 'http://api.cmsid.org';
+$version_mysql			= '5.0';
+
+$api_url				= 'http://api.cmsid.org';
+
+?>

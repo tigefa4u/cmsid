@@ -1,4 +1,4 @@
-#message,#message_no_ani, p.message,p.message_no_ani,div #error,div #success,div #error_no_ani{
+#message,#message_no_ani, p.message,p.message_no_ani,#error,#success,#success_no_ani,#error_no_ani{
 	text-align:left;
 	padding:10px 10px 10px 10px;
     border-radius: 2px;
@@ -17,7 +17,7 @@
 	background-color: #ffffe0;
 	border: 1px solid #e6db55;
 }
-#success {
+#success,#success_no_ani {
 	background-color: #c9f7b4;
 	border: 1px solid #6ec747;
 }

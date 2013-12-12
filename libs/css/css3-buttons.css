@@ -16,7 +16,9 @@ a.button
 	-moz-transition:border-color .20s;
 	-o-transition:border-color .20s;
 	transition:border-color .20s;
-	padding:5px 6px 4px;
+	padding:4px;
+	padding-top:6px;
+	padding-bottom:6px;
 	margin:0;
 	font-family:'LG';
 }
@@ -93,7 +95,7 @@ a.button.action:hover
 }
 
 a.button.on{
-	font-weight:bold;
+	font-weight:normal;
 }
 
 a.button.button2{
@@ -104,9 +106,6 @@ a.button.button2{
 }
 
 a.button.button3{
-	line-height:11px;
-	height:13px;
-	padding:7px 8px;
 	margin:0;
 }
 

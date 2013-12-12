@@ -36,7 +36,7 @@ if(! defined('BLOCK_EXTERNAL_LEECHERS') ) 	define ('BLOCK_EXTERNAL_LEECHERS', fa
 //Image fetching and caching
 if(! defined('ALLOW_EXTERNAL') )			define ('ALLOW_EXTERNAL', TRUE);						// Allow image fetching from external websites. Will check against ALLOWED_SITES if ALLOW_ALL_EXTERNAL_SITES is false
 if(! defined('ALLOW_ALL_EXTERNAL_SITES') ) 	define ('ALLOW_ALL_EXTERNAL_SITES', false);				// Less secure. 
-if(! defined('FILE_CACHE_ENABLED') ) 		define ('FILE_CACHE_ENABLED', TRUE);					// Should we store resized/modified images on disk to speed things up?
+if(! defined('FILE_CACHE_ENABLED') ) 		define ('FILE_CACHE_ENABLED', FALSE);					// Should we store resized/modified images on disk to speed things up?
 if(! defined('FILE_CACHE_TIME_BETWEEN_CLEANS'))	define ('FILE_CACHE_TIME_BETWEEN_CLEANS', 86400);	// How often the cache is cleaned 
 
 if(! defined('FILE_CACHE_MAX_FILE_AGE') ) 	define ('FILE_CACHE_MAX_FILE_AGE', 86400);				// How old does a file have to be to be deleted from the cache
@@ -1228,7 +1228,7 @@ class timthumb {
 		header ('Content-Length: ' . filesize($file) );
 		header ('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 		header ("Pragma: no-cache");
-		$bytes = @readfile($file);
+		$bytes = @file_get_contents($file);
 		if($bytes > 0){
 			return true;
 		}

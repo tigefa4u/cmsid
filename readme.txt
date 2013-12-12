@@ -1,17 +1,15 @@
-Cara install cmsid pra release beta preview
+Cara install cmsid jika online
 
 1. extrak ke server
-2. akses dengan browser
-3. lakukkan instalasi secara otomatis
+2. ubah file config.php sesuai dengan db server dan url server
+3. ubah url "siteurl" tabel "_options" sesuai dengan alamat web
 
 done,..
 
 untuk masuk admin
 
-{url website}/?login
-{url website}/?admin
+{url website}/?auth
 
-06/06/2013
-powered by cmsid
-www.cmsid.org
-author by eko
+username : admin
+password : admin
+

@@ -16,18 +16,26 @@ function get_option( $option, $default = false ){
 	if( empty( $option ) )
 		return false;
 	
-	$option	= esc_sql( $option );
-	
-	$sql = $db->select( "options", array('option_name' => $option),'LIMIT 1' );
-	$obj = $db->fetch_obj( $sql );
+	$sql = $db->select( "options", array('option_name' => esc_sql( $option ) ),'LIMIT 1' );	
 		
-	if( empty( $obj ) )
-		return false;
-		
-	if( is_object($obj) )
+	if( $db->num( $sql ) > 0 ){
+		$obj = $db->fetch_obj( $sql );
 		return $obj->option_value;
-	else 
-		return $default;
+	/*}elseif( $db->num( $sql ) < 1 && $default == false ){
+		$oops_title = "Kesalahan Table Database";
+		$oops_msg = sprintf( "<p>Telah terjadi kesalahan dalam membangun hubungan ke table <code>%s</code>. Ini bisa berarti database server host Anda sedang down atau table tersebut tidak ada pada database atau terjadi kesalahan pada konfigurasi table <code>%s</code></p>
+			<ul>
+				<li>Apakah Anda yakin bahwa table <code>%s</code> ada di dalam database?</li>
+				<li>Apakah Anda yakin Anda memiliki username dan password yang benar?</li>
+				<li>Apakah Anda yakin bahwa Anda telah mengetik nama host yang benar?</li>
+				<li>Apakah Anda yakin bahwa database server berjalan?</li>
+			</ul>
+			<p>Jika Anda tidak yakin dengan istilah tersebut Anda mungkin harus menghubungi host Anda.</p>
+			", "$db->options" , "$db->options" , "$db->options");
+		the_oops_message( $oops_title, $oops_msg, 'simple' );
+	*/
+	}
+	else return $default;
 		
 	/*
 	if( empty($val) 

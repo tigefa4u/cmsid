@@ -239,26 +239,10 @@ function timer_stop( $display = 0, $precision = 3 ){
 /**
  * mengatur kesalahan php dan menagani mode debug
  */
-function debug_mode(){
+function debug_mode(){	
 	
 	if( debug ){
-		if ( defined( 'E_DEPRECATED' ) )
-			error_reporting( E_ALL & ~E_DEPRECATED & ~E_STRICT );
-		else
-			error_reporting( E_ALL );
-			
-		if ( debug_display )
-			ini_set( 'display_errors', 1 );
-
-		if ( debug_log ) {
-			ini_set( 'log_errors', 1 );
-			ini_set( 'error_log', content_path . '/debug.log' );
-		}
-	} else {
-		if ( defined( 'E_RECOVERABLE_ERROR' ) )
-			error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
-		else
-			error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING );
+		error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
 	}
 }
 /**
@@ -389,7 +373,6 @@ function get_mu_plugins( $mu_plugins_root = plugin_path ) {
 	}
 
 	@closedir( $mu_plugins_dir );
-	@closedir( $mu_plugins_subdir );
 	
 	return $mu_plugins_files;
 }
@@ -454,12 +437,10 @@ function get_noactive_and_valid_plugins() {
 /**
  * Medaftarkan plugins dan aplikasi
  */
-function loaded_component() {
-	global $applications;
-		
+function loaded_component() {		
 	require( admin_path . '/plugin.php' );
 	require( admin_path . '/application.php' );
-	dir_applications();
+	require( admin_path . '/themes.php' );
 	
 }
 /**

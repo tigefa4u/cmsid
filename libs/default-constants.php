@@ -58,6 +58,7 @@ function plugin_directory_constants() {
  */
 function templating_constants() {
 
+	if ( !defined('template_path') )
 	define('template_path', get_template_directory());
 
 	if ( !defined('default_theme') )
@@ -87,12 +88,6 @@ function initial_constants(){
 		
 	if ( !defined('debug') )
 		define( 'debug', false );
-
-	if ( !defined('debug_display') )
-		define( 'debug_display', true );
-
-	if ( !defined('debug_log') )
-		define('debug_log', false);
 
 	if ( !defined('cache') )
 		define('cache', false);

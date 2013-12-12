@@ -12,7 +12,7 @@ $id_reply = get_query_var('go');
 ?>
 <link href="<?php get_template_directory_uri(true); ?>/css/style-comments.css" rel="stylesheet" type="text/css">
 <?php
-if( get_option('post_comment') == 1 ):
+if( get_option('post_comment') == 1 && get_status_comment($id) == 0 ):
 /*
  *show comment where id post and status = 1 order by id desc limit where data limit table id_comment_set
  */

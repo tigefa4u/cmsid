@@ -8,7 +8,8 @@ if(!defined('_iEXEC')) exit;
 function get_gravatar( $email, $default = '', $s = 50, $d = 'mm', $r = 'g', $img = false, $atts = array()) {
 	
 	$set_avatar = get_option('avatar_default');
-	if($set_avatar!=$default && empty($default)) $default = $set_avatar;
+	if($set_avatar != $default && empty($default))
+	$default = $set_avatar;
 	
 	if($default=='blank'):
 	$out = site_url('/libs/img/blank.gif');
@@ -18,12 +19,12 @@ function get_gravatar( $email, $default = '', $s = 50, $d = 'mm', $r = 'g', $img
 	if($img){
 		$host = 'https://secure.gravatar.com';
 	}else{
-	if ( !empty($email) ){
-		$host = sprintf( "http://%d.gravatar.com", ( hexdec( $email_hash{0} ) % 2 ) );
-	}else{
-		$host = 'http://0.gravatar.com';
-	}
-	$out =$host.'/avatar/s='.$s;
+		if ( !empty($email) ){
+			$host = sprintf( "http://%d.gravatar.com", ( hexdec( $email_hash{0} ) % 2 ) );
+		}else{
+			$host = 'http://0.gravatar.com';
+		}
+		$out = $host.'/avatar/s='.$s;
 	}
 	if ( 'mystery' == $default )
 		$default = "$host/avatar/ad516503a11cd5ca435acc9bb6523536?s=".$s; 

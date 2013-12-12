@@ -10,7 +10,7 @@ function get_dir_plugins( $plugin = null ) {
 	$component_root = plugin_path .'/';
 	$component = array();
 	
-	if( $plugin ):
+	if( $plugin && file_exists("$component_root/$plugin") ):
 	
 		$component_data = get_plugin_data( "$component_root/$plugin" ); 
 		$plugin_id = plugin_basename( $plugin );
@@ -61,7 +61,6 @@ function get_dir_plugins( $plugin = null ) {
 	}
 
 	@closedir( $component_dir );
-	@closedir( $component_subdir );
 
 	if ( empty($component_files) )
 		return $component;
@@ -94,6 +93,7 @@ function get_plugin_data( $file ) {
 		'Version' 		=> 'Version',
 		'Description' 	=> 'Description',
 		'Author' 		=> 'Author',
+		'APIKey' 		=> 'API Key',
 		'AuthorURI' 	=> 'Author URI',
 	);
 

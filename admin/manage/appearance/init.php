@@ -62,6 +62,9 @@ function get_widget(){
 	
 	if( get_query_var('go') == 'theme-editor' )
 		$gadget[] = array('title' => 'More Files','desc' => list_files());	
+	elseif( get_query_var('sys') == 'appearance' && !get_query_var('go') ){
+		$gadget[] = array('title' => 'Update Baru Tersedia','desc' => info_themes_update_all());
+	}
 	
 	if( get_query_var('go') == 'menus' ){
 		$gadget[] = array('title' => 'Current Menu Group','desc' => current_menu_group($get_group_title,$get_group_id));	
@@ -131,26 +134,6 @@ function themes_current(){
 	load_style_info(get_option('template').'/', true);
 }
 
-function themes_available(){
-	$theme_path_root = theme_path .'/';
-	$i=0;
-	unset($theme_arr);
-	if ($handle = opendir($theme_path_root)) {
-		while (false !== ($file = readdir($handle))) {
-		$i++;
-		if ($file != "." && $file != ".." 
-		&& is_dir($theme_path_root . $file) 
-		&& $file . "/" != get_option('template')
-		&& file_exists( $theme_path_root . $file . '/info.xml' ) ) 
-		$theme_arr[] = $file;
-		
-		}
-		closedir($handle);
-	}
-	
-	return $theme_arr;
-}
-
 if(!function_exists('get_file_name')){
 	function get_file_name($string){
 		return end( explode('/',$string) );
@@ -178,42 +161,54 @@ function editing_file_themes(){
 
 function list_files(){
 	$theme_path_root = theme_path . '/';
-	$file_allow = array('.php','.css','.xml','.html','.htm','.js','.txt');
+	$file_allow = array('php','css','xml','html','htm','js','txt');
 	$path_dir 	= $theme_path_root . get_option('template');
 	$filed		= '<ul class="list-file">';	
 	if( file_exists( $path_dir.'/index.php' ) ){		
-	foreach(rec_listFiles($path_dir) as $k) {
-		if ( in_array(substr($k, -4), $file_allow)){
-			$k = str_replace( $path_dir , '' , $k );
-			$filed .= '<li><a href="?admin=single&sys=appearance&go=theme-editor&file='.$k.'">'.$k.'</a></li>';
+		foreach(getFilesFromDir($path_dir) as $k) {			
+			$ext = end( explode( '.', $k ) );
+			if ( in_array( $ext, $file_allow) ){
+				$k = str_replace( $path_dir , '' , $k );
+				$filed .= '<li><a href="?admin=single&sys=appearance&go=theme-editor&file='.$k.'">'.$k.'</a></li>';
+			}
 		}
-	}}else $filed.='Empty File';
+	}else $filed.='Empty File';
 	$filed .= '</ul>';
 	return $filed;
 }
 
-function rec_listFiles( $from = '.'){
-    if(! is_dir($from))
-        return false;
-    
-    $files = array();
-    if( $dh = opendir($from))
-    {
-        while( false !== ($file = readdir($dh)))
-        {
-            // Skip '.' and '..'
-            if( $file == '.' || $file == '..')
-                continue;
-            $path = $from . '/' . $file;
-            if( is_dir($path) )
-                $files += rec_listFiles($path);
-            else
-                $files[] = $path;
+function getFilesFromDir($dir) {
+
+  $files = array();
+  if ($handle = opendir($dir)) {
+    while (false !== ($file = readdir($handle))) {
+        if ($file != "." && $file != "..") {
+            if(is_dir($dir.'/'.$file)) {
+                $dir2 = $dir.'/'.$file;
+                $files[] = getFilesFromDir($dir2);
+            }
+            else {
+              $files[] = $dir.'/'.$file;
+            }
         }
-        closedir($dh);
     }
-    return $files;
+    closedir($handle);
+  }
+
+  return array_flat($files);
 }
+
+function array_flat($array) {
+	$tmp = array();
+	foreach($array as $a) {
+			if( is_array($a) ) {
+			  $tmp = array_merge($tmp, array_flat($a));
+			}else {
+			  $tmp[] = $a;
+			}
+	}
+	return $tmp;
+} 
 
 if(!function_exists('del_folder_themes')){
 	function del_folder_themes($path){	
@@ -237,4 +232,17 @@ if(!function_exists('deleteDirectory')){
 			} 
 		return rmdir($dir); 
 	} 
+}
+
+if(!function_exists('info_themes_update_all')){
+	function info_themes_update_all(){	
+		$info = '';
+		$info.= '<script type="text/javascript">
+				$(document).ready(function(){
+					getLoad(\'update_view\',\'?request&load=libs/ajax/latest.php&action=etc&type=themes\');	
+				});	
+				</script>
+				<div id="update_view"></div>';
+		return $info;
+	}
 }

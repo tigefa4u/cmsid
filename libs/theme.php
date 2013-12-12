@@ -165,11 +165,18 @@ function the_content( $dispaly = true ){
 
 function the_contents(){
 	
-	if( $get_query = get_query_var('com') ){
+	$path = theme_path .'/'. get_option('template');
+	if( $get_query = get_query_var('s') ){
+		$file = $path .'/page-search.php';
+		if( file_exists( $file ) ){
+			require_once( $file );
+			return true;
+		}
+	}elseif( $get_query = get_query_var('com') ){
 		
-		$file_page = theme_path .'/'. get_option('template') .'/page.php';
-		if( $get_query == 'page' && file_exists($file_page) ){
-			require_once( $file_page );
+		$file = $path .'/page.php';
+		if( $get_query == 'page' && file_exists( $file ) ){
+			require_once( $file );
 			return true;
 		}
 		else
@@ -187,8 +194,6 @@ function the_contents(){
 				return true;
 			}
 		}
-	}else{
-		return false;
 	}
 }
 /**

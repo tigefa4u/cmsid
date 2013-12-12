@@ -88,4 +88,13 @@ while($data	= $db->fetch_obj($q)){
 </div>
 </div>
 </div>
-<?php endif;?>
+<?php 
+endif;
+$query_total = $db->select('users');
+$query_pending = $db->select('users', array('status'=>0));
+$query_negara = $db->query("SELECT * FROM $db->users GROUP BY user_country");
+$total = $db->num($query_total);
+$pending = $db->num($query_pending);
+$negara = $db->num($query_negara);
+?>
+<div class="gd-footer">Total member: <?php echo (int)$total;?> users, Tertunda: <?php echo (int)$pending;?> users, dari <?php echo (int)$negara;?> negara</div>

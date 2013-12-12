@@ -92,13 +92,9 @@ if(!function_exists('delete_applications')){
 if(!function_exists('del_folder_applications')){
 	function del_folder_applications($path){
 		
-		$path_dir = application_path . $path;
-		if( file_exists( $path_dir . '/' . $path . '.php' ) ){
+		$path_dir = application_path ."/$path";
+		if( is_dir($path_dir) && file_exists( $path_dir ."/$path.php" ) )
 			deleteDirectory($path_dir);
-		}else{
-			if( file_exists( $path_dir . '.php' ) )
-			unlink($path_dir . '.php');
-		}
 	}
 }
 
@@ -119,9 +115,13 @@ if(!function_exists('deleteDirectory')){
 
 if(!function_exists('info_app_update_all')){
 	function info_app_update_all(){	
-		$info = '<div class="padding">';
-		$info.= '<div id="message_no_ani">No update found</div>';
-		$info.= '</div>';
+		$info = '';
+		$info.= '<script type="text/javascript">
+				$(document).ready(function(){
+					getLoad(\'update_view\',\'?request&load=libs/ajax/latest.php&action=etc&type=app\');	
+				});	
+				</script>
+				<div id="update_view"></div>';
 		return $info;
 	}
 }

@@ -74,6 +74,7 @@
 		
 	function getLoad( id, url_data, s ){	
 		
+		
 		var request = $.ajax({
 		  url: url_data,
 		  type: "GET",
@@ -81,7 +82,7 @@
 		  global: false, 
 		  dataType: "html",
 		  beforeSend: function () {
-			var ajax_loader = '<center style="padding:10px;"><img src="libs/img/ajax-loader-black.gif"><div style="clear:both">Loading...</div></center>';
+			var ajax_loader = '<center style="padding:20px;"><div class="_ani_loading"><span style="clear:both">Memuat...</span></div></center>';
 			if( s ){
 				$("#"+id).html('<div class="gd"><div class="gd-content">'+ajax_loader+'</div></div></div> ');
 			}else{
@@ -94,6 +95,7 @@
 			$("#"+id).html('<div class="padding"><p id="error_no_ani">Request failed: '+data+'</p></div>');
 		});
 		request.done(function ( data ) {
+			//$("#redactor_modal_header").show();
 			$("#"+id).html(data);
 		});
 	}	
@@ -129,6 +131,7 @@
 	$(document).ready(function() {
 	
 	event_scroll('.nav.nav-fix',9);
+	//$("#redactor_modal_header").css({'display':'none'});
 	
 	$("#menuJump").click( function(){
 		$("#menuJump .icon").toggleClass('menuJumpBack').fadeIn('slow');

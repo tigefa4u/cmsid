@@ -5,6 +5,7 @@
  */
 if(!defined('_iEXEC')) exit;
 
+
 if( !function_exists('add_activity') ){
 	function add_activity(){}
 }
@@ -16,8 +17,6 @@ if( !function_exists('add_activity') ){
 function add_manager_top(){
 	global $login, $aside_default;
 	
-
-
 $style_width_top_left = ' style="width:650px"';
 $style_width_menu_left = ' style="width:800px"';
 if( $_SESSION['lw'] == 'full' ) $style_width_menu_left = $style_width_top_left = '';
@@ -45,12 +44,16 @@ else
 
 ?>
     <li class="topNavLink <?php echo $top_menu_home;?>"><a href="?admin" class="tip" title="Home"><div class="icon menuHome"></div></a></li>
+    <?php if( get_option('toogle_menutop') == 1 ):?>
     <li class="topNavLink"><a class="tip" id="menuJump" title="Jump" style="cursor:pointer;"><div class="icon menuJump"></div></a></li>
+    <?php endif;?>
     <div class="menuNavJumpFirst" style="display:block; float:left;">
     <li class="topNavLink<?php echo $top_menu_app;?>"><a href="?admin&sys=applications"><div class="icon menuApps"></div><div class="icon menuAppsName">Applications</div></a><span class="jTips animating"><?php echo get_counted( 'app' );?></span></li>
     <li class="topNavLink<?php echo $top_menu_plugin;?>"><a href="?admin&sys=plugins"><div class="icon menuPlugins"></div><div class="icon menuPluginsName">Plugins</div></a><span class="jTips animating"><?php echo get_counted( 'plg' );?></span></li> 
     <li class="topNavLink<?php echo $top_menu_install;?>"><a href="?admin&sys=installer"><div class="icon menuInstall"></div><div class="icon menuInstallName">Installer</div></a></li>
+    <?php if(get_option('help_guide')==1):?>
     <li class="topNavLink<?php echo $top_menu_help;?>"><a href="?admin=single&sys=options&go=help-guide"><div class="icon menuHelp"></div><div class="icon menuHelpName">Help & Guide</div></a></li>
+    <?php endif;?>
     </div>
     <div class="menuNavJumpSecond" style="display:none; float:left;">
  <li class="topNavLink nav_jump">
@@ -152,11 +155,11 @@ function get_counted( $get_ = 'app' ){
 	elseif( $get_ == 'plg' ) return count( get_noactive_and_valid_plugins() );
 	else return false;	
 }
-function add_manager_header_notif(){
+function the_frame(){
 	
-if( get_query_var('x') == 'header-notif' ){
-	if( checked_option( 'header-notif-x' ) ) set_option( 'header-notif-x', 1 );
-	else add_option( 'header-notif-x', 1 );
+if( get_query_var('x') == 'frame' ){
+	if( checked_option( 'frame' ) ) set_option( 'frame', 1 );
+	else add_option( 'frame', 1 );
 	
 	redirect('?admin');
 }
@@ -195,7 +198,7 @@ if( get_query_var('x') == 'header-notif' ){
 }
 
 .codrops-top-notif-content .wrap-width{
-	width:550px;
+	width:650px;
 	height:100%;
 	margin:0 auto;
 	margin-top:20px;
@@ -267,7 +270,7 @@ if( get_query_var('x') == 'header-notif' ){
 
 <div class="header_notif">
 <div class="img_close_guide"></div>
-<div class="img_close_h"><a href="?admin&x=header-notif"><span class="img_close"></span></a></div>
+<div class="img_close_h"><a href="?admin&x=frame"><span class="img_close"></span></a></div>
 <div class="header_notif_p">
 <p>
 <span>Selamat datang</span>, terimakasih sudah menggunakan karya dan produk anak negeri, untuk berpartisipasi dalam pengembangan cms ini <a href="http://cmsid.org/page-support-us.html" target="_blank">lihat tautan ini</a>.<br /><br />
@@ -277,9 +280,16 @@ Jika ingin tahu lebih lanjut penggunaan cms ini Silahkan lihat demo berikut ini.
 </div>
 <div style="clear:both"></div>
 <div class="ebbeded_video">
-<iframe title="YouTube video player" class="youtube-player" type="text/html" 
-width="100%" height="350" src="http://help.cmsid.org/?frame=full&video=demo"
-frameborder="0" allowFullScreen></iframe>
+<iframe
+	src="http://api.cmsid.org/?v=2&content=video&action=detail&&id=1&themes=yes" 
+    title="YouTube video player" 
+    class="youtube-player" 
+    type="text/html" 
+    width="100%" 
+    height="350" 
+    frameborder="0" 
+    allowFullScreen>
+</iframe>
 </div>
 <div style="clear:both"></div>
 </div>
@@ -287,16 +297,71 @@ frameborder="0" allowFullScreen></iframe>
 </div>
 <?php
 }
-
-if( 1 != get_option('header-notif-x') )
-add_action('manager_header','add_manager_header_notif');
+if( 1 != get_option('frame') )
+	add_action('manager_header','the_frame');
+	
+function the_notif(){
+	global $db;
+	
+if( get_query_var('x') == 'welcome' ){
+	if( checked_option( 'welcome' ) ) set_option( 'welcome', 1 );
+	else add_option( 'welcome', 1 );
+	
+	redirect('?admin');
+}
+?>
+<div id="dashboard-notification" class="gd">
+	<div class="dn-close"><a href="?admin&x=welcome" title="Dismis"><span class="dismis right"></span></a></div>
+	<div class="dn-content"><div class="padding">
+    <div class="dn-content-cols">
+        <div class="cols" style="background: #f8f8f8;margin-right: 5px;padding: 2px; border-right:1px solid #ddd; padding-left:20px; padding-bottom:10px; text-align:center;">
+        	<strong>Memulai</strong>
+            <div class="clearfix"></div>
+            <a href="?admin=single&sys=appearance&go=theme-editor&theme=<?php echo get_option('template');?>" class="button button1 green">Custome situs</a>
+            <div class="clearfix"></div>or <a href="?admin&sys=appearance">ubah tampilan</a>
+        </div>
+        <div class="cols">
+        	<strong>Langkah berikutnya</strong>
+            <div class="clearfix"></div>
+            <ul class="dn-ul">
+            <li><a href="?admin=single&apps=post&go=add&type=post">Tulis sebuah posting</a></li>
+            <li><a href="?admin=single&apps=post&go=add&type=page">Tulis sebuah halaman</a></li>
+            <li><a href="<?php echo site_url();?>">Lihat situs</a></li>
+            </ul>
+        </div>
+        <div class="cols">
+        	<strong>Lainnya</strong>
+            <div class="clearfix"></div>
+            <ul class="dn-ul">
+            <li>Atur <a href="?admin&sys=options">option</a> atau <a href="?admin&sys=appearance&go=widgets">widget</a> atau <a href="?admin&sys=appearance&go=menus">menu</a></li>
+            <li><a href="?admin&apps=post&go=setting">Mati atau hidupkan komentar</a></li>
+            <li><a href="http://cmsid.org/page-langkah-pertama-menggunakan-cmsid.html">Pelajari lebih lanjut untuk memulai</a></li>
+            </ul>
+    	</div>
+    </div>
+	</div></div>
+    <?php /*
+	$total_all_article = $db->fetch_obj( $db->query("SELECT COUNT(id) AS total FROM $db->post") );
+	$total_page = $db->fetch_obj( $db->query("SELECT COUNT(id) AS total FROM $db->post WHERE type='page'") );
+	$total_post = $db->fetch_obj( $db->query("SELECT COUNT(id) AS total FROM $db->post WHERE type='post'") );
+	$total_author = $db->fetch_obj( $db->query("SELECT COUNT(id) AS total FROM $db->post GROUP BY user_login") );
+	$total_comment = $db->fetch_obj( $db->query("SELECT COUNT(comment_id) AS total FROM $db->post_comment") );
+	?>
+    <div class="gd-footer">Total article: <strong><?php echo $total_all_article->total;?></strong> articles (<strong><?php echo $total_page->total;?></strong> pages and <strong><?php echo $total_post->total;?></strong> posts), <strong><?php echo $total_author->total;?></strong> authors, <strong><?php echo $total_comment->total;?></strong> comments</div> */?>
+</div>
+<?php
+}
+if( 1 != get_option('welcome') )
+	add_action('the_notif','the_notif');
 
 function add_manager_content(){
 	
 	if(!isset($_SESSION) )
 		session_start();
 	
-	if( 'oops' == is_admin_values() ) the_main_oops();
+	$oops_title = "Halaman tidak ditemukan!";
+	$oops_msg = "Ups halaman '".esc_sql( $_SERVER['HTTP_REFERER'] )."' yang Anda cari telah dipindahkan atau tidak ada lagi..<br />Silakan coba halaman lain tetapi jika Anda tidak dapat menemukan apa yang Anda cari, beritahukan kepada kami.<br />";
+	if( 'oops' == is_admin_values() ) the_oops_message( $oops_title, $oops_msg, 'simple' );
 	elseif( 'full' == $_SESSION['lw'] || 'full' == is_admin_values() ){
 	?>
 		<link href="libs/css/full.css" rel="stylesheet" />  
@@ -330,33 +395,48 @@ function add_manager_content(){
 
 add_action('manager_content','add_manager_content');
 
-
-function the_main_oops(){
+function the_oops_message( $title, $message, $style = false, $style_logo = 'attention' ){
 	if ( file_exists( content_path . '/oops.php' ) ) {
 		require_once( content_path . '/oops.php' );
 		die();
 	}
-	?>
-    <div id="oops_body" class="drop-shadow lifted">
+	?>    
+	<link href="libs/css/oops.css" rel="stylesheet" />
+    <div id="oops_body"> <!--class="drop-shadow lifted"-->
     <div class="oops_content">
-    <div class="oops_logo">Ups maaf! 
-    <div class="gd-menu right">
-    <a href="?admin" class="button">&laquo;&laquo; Kembali ke dashboard</a>
-    </div>
-    </div>
-    <div style="clear:both"></div>
-    <div style="padding:10px;">
-    <div class="atentions_logo"><span class="atentions_logo"></span></div>
-    <p style="margin-left:60px;">
-    <h1>Halaman tidak ditemukan!</h1><br />
-    Ups halaman '<?php echo esc_sql( $_SERVER['HTTP_REFERER'] )?>' yang Anda cari telah dipindahkan atau tidak ada lagi..<br />
-    Silakan coba halaman lain tetapi jika Anda tidak dapat menemukan apa yang Anda cari, beritahukan kepada kami.<br /><br />
-    </p>
-    </div>
+    <?php if( $style == 'simple' ): ?>
+        <div style="clear:both"></div>
+        <div style="padding:10px;">
+        <?php if( $style_logo == 'attention' ):?>
+        <div class="atentions_logo"><span class="atentions_logo"></span></div>
+        <?php elseif( $style_logo == 'notfound' ):?>
+        <div class="notfound_logo"><span class="notfound_logo"></span></div>
+        <?php endif;?>
+        <p style="margin-left:60px;">
+        <h1><?php echo $title;?></h1><br /><div class="message"><?php echo $message;?></div>
+        </p>
+        <p class="right"><a href="?admin" class="button">&laquo;&laquo; Kembali ke dashboard</a></p>        
+        <div style="clear:both"></div>
+        </div>
+    <?php else: ?>
+        <div class="oops_logo">Ups maaf! 
+        <div class="gd-menu right">
+        <a href="?admin" class="button">&laquo;&laquo; Kembali ke dashboard</a>
+        </div>
+        </div>
+        <div style="clear:both"></div>
+        <div style="padding:10px;">
+        <div class="atentions_logo"><span class="atentions_logo"></span></div>
+        <p style="margin-left:60px;">
+        <h1><?php echo $title;?></h1><br /><?php echo $message;?><br />
+        </p>
+        </div>
+    <?php endif;?>
     <div style="clear:both"></div>
     </div>
     </div>
     <?php
+	die();
 }
 
 function list_category_op( $id = false ){
@@ -381,7 +461,9 @@ function list_category_op( $id = false ){
  * @return array, html
  */
 function the_actions_menu(){
-global $widget, $aside_default, $applications;
+global $widget, $aside_default;
+
+$applications = get_dir_applications();
 	
 	if( get_sys_cheked( get_query_var('sys') ) 
 	&& $values = is_sys_values() )
@@ -405,10 +487,15 @@ global $widget, $aside_default, $applications;
 		return false;
 	else{
 		
+	$toogle_menu_action = get_option('toogle_menuaction');
+	if( $toogle_menu_action == 1 ){
+		$a_menu_act = '<a id="menuActions" style="cursor:pointer"><span class="menuActions" style="display:block;">↓</span><span class="menuActions" style="display:none;">↑</span></a>';
+		$class_menu_act = ' class="plr menuActions_list" style="display:none;"';
+	}
+		
 ?>
 <ul class="menu-box"><li><a href="./?admin">Dashboard</a></li></ul>
-<div class="p head">Actions<a id="menuActions" style="cursor:pointer">
-<span class="menuActions" style="display:block;">↓</span><span class="menuActions" style="display:none;">↑</span></a></div><div class="plr menuActions_list" style="display:none;"><ul class="menu-box">
+<div class="p head">Actions<?php echo $a_menu_act;?></div><div<?php echo $class_menu_act;?>><ul class="menu-box">
 <?php		
 if( isset($widget['menu']) && count($widget['menu']) > 0 && !empty($widget['menu']) ) {
 	foreach($widget['menu'] as $k => $v){
@@ -674,4 +761,32 @@ unset(
 	$_SESSION['theme']
 	);
 }
+
+function admin_style(){
+
+$style = get_option('background_admin');
+$style = json_decode( $style );
+?>
+<style>
+body{
+	<?php if( !empty($style->background->color) ){?>
+	background-color: <?php echo $style->background->color;?>; 
+	<?php } if( !empty($style->background->image) ){?>
+	background-image: url('<?php echo $style->background->image;?>');
+	<?php } if( !empty($style->background->repeat) ){?>
+	background-repeat: <?php echo $style->background->repeat;?>;
+	<?php } if( !empty($style->background->position[0]) ){?>
+	background-position: <?php echo $style->background->position[0];?>;
+	<?php } if( !empty($style->background->position[1]) ){?>
+	background-position: <?php echo $style->background->position[1];?>;
+	<?php } if( !empty($style->background->position[2]) ){?>
+	background-position: <?php echo $style->background->position[2];?>;
+	<?php } if( !empty($style->background->attachment) ){?>
+	background-attachment:<?php echo $style->background->attachment;?>;
+	<?php }?>
+}
+</style>
+<?php 
+}
+add_action('the_head_admin','admin_style',10);
 ?>

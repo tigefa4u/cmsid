@@ -4,11 +4,12 @@
  * @type: plugin
  */
 /*
-Plugin Name: Block Widget
+Plugin Name: Block
 Plugin URI: http://cmsid.org/#
 Description: Plugin Pembuat block widget.
 Author: Eko Azza
 Version: 1.1
+API Key: EQHZTqp2pAZFgLMC8fbT
 Author URI: http://cmsid.org/
 */ 
 //not direct access

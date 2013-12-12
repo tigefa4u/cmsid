@@ -40,15 +40,15 @@ elseif( $get_redirect = is_redirect_values() )
 	$base_url = esc_sql( $get_redirect );
 
 	if (!headers_sent()){ 
-			//header('HTTP/1.1 404 Not Found');
-			header('Location: '.$base_url); exit;
+		//header('HTTP/1.1 404 Not Found');
+		header('Location: '.$base_url); exit;
 	}else{ 
-			echo '<script type="text/javascript">';
-			echo 'window.location.href="'.$base_url.'";';
-			echo '</script>';
-			echo '<noscript>';
-			echo '<meta http-equiv="refresh" content="0;url='.$base_url.'" />';
-			echo '</noscript>'; exit;
+		echo '<script type="text/javascript">';
+		echo 'window.location.href="'.$base_url.'";';
+		echo '</script>';
+		echo '<noscript>';
+		echo '<meta http-equiv="refresh" content="0;url='.$base_url.'" />';
+		echo '</noscript>'; exit;
 	}
 
 }

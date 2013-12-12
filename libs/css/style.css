@@ -4,7 +4,19 @@ body{
 }
 input{
 }
-
+fieldset{
+	border:1px solid #ddd;
+	padding:3px;
+	padding-top:5px;
+	padding-bottom:10px;
+}
+fieldset{
+	background-color:#f9f9f9;
+}
+fieldset > legend{
+	margin-left:2px;
+	padding:2px;
+}
 p{
 	margin-bottom: 10px;	
 	line-height: 1.5em;		
@@ -52,7 +64,6 @@ p{
 	box-shadow: inset 2px 1px 2px rgba(211,211,211,0.8);
 	
 }
-
 #body
 {
 	height:100%;
@@ -108,14 +119,14 @@ p{
 #widget .box-head {
     padding: 2px 2px 2px 0;
     border-bottom: 1px solid #eceded;
-    font-weight: bold;
+    font-weight:normal;
  }
 #widget .box-content {
     padding: 5px 2px 10px 0;
 }
 #widget .box-content ul.menu-gadget li{
 	padding:3px 0;
-	font-weight:700;
+	font-weight:normal;
 }
 #widget .box-content ul.menu-gadget li a{}
 
@@ -143,6 +154,52 @@ p{
 .gofull{ background-position:0 0; width:15px;}
 .gowarp{ background-position:-16px 0; width:15px;}
 
+#dashboard-notification{}
+#dashboard-notification .dn-close{
+	position:absolute;
+	right:0;
+}
+#dashboard-notification .dn-close span.dismis{
+	background: url('../img/xit.gif') no-repeat left;
+	width:10px;
+	height:10px;
+	margin-top:5px;
+	margin-right:5px;
+}
+#dashboard-notification .dn-close span.dismis:hover{
+	background-position:-10px 0px;
+	cursor:pointer;
+}
+#dashboard-notification .dn-content{
+}
+#dashboard-notification .dn-content .padding{
+	padding:0;
+}
+#dashboard-notification .dn-content .padding a.button {
+	float:none;
+}
+#dashboard-notification .dn-content .dn-content-cols{
+    display: flex;
+    flex: 1 1 auto;
+    height: 100%;
+    width: 100%;
+}
+#dashboard-notification .dn-content .dn-content-cols div.cols{
+    max-height: 100%;
+    flex: 1 1 30%;
+}
+
+#dashboard-notification .dn-content .dn-content-cols div.cols ul.dn-ul li{
+	list-style:circle;
+	padding-bottom:5px;
+	margin-left:13px;
+}
+#dashboard-notification .dn-content .dn-content-cols div.cols .button1{
+	padding:15px 30px;
+	margin-bottom:5px;
+	font-family:'LGB';
+}
+
 textarea.grow,div.grow {
     resize: none;
     overflow-x: hidden;
@@ -150,6 +207,14 @@ textarea.grow,div.grow {
     height: 15px
 }
 
+a.button.popupCore.black.icon-latest-upgrade{ 
+	background-image:url(../img/latest-refresh.png);
+	background-position:left;
+	background-position-x: 5px;
+	background-repeat:no-repeat;
+	padding:10px;
+	text-indent:30px;
+}
 /**
  * Date Time Picker Style
  */
@@ -321,3 +386,79 @@ ul.list-file .active {
     color: #737070
     }
 
+
+@-webkit-keyframes RotateSpinner {
+	from { 
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}	
+}
+
+@-moz-keyframes RotateSpinner {
+	from { 
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(360deg);
+	}	
+}
+
+@-o-keyframes RotateSpinner {
+	from { 
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-o-transform: rotate(360deg);
+	}	
+}
+
+@keyframes RotateSpinner {
+	from { 
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}	
+}
+
+
+._ani_loading {
+    background-image: url("../img/ani_loading.png");
+    height: 24px;
+    width: 24px;
+	
+    -webkit-animation: 1.2s linear 0s normal none infinite RotateSpinner;
+    -moz-animation: 1.2s linear 0s normal none infinite RotateSpinner;
+    animation: 1.2s linear 0s normal none infinite RotateSpinner;
+	
+	-webkit-animation-duration: 1.2s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-direction: normal;
+	-webkit-animation-fill-mode: none;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-name: RotateSpinner;
+		
+	-moz-animation-duration: 1.2s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-delay: 0s;
+	-moz-animation-direction: normal;
+	-moz-animation-fill-mode: none;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-name: RotateSpinner;
+	
+	animation-duration: 1.2s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-direction: normal;
+	animation-fill-mode: none;
+	animation-iteration-count: infinite;
+	animation-name: RotateSpinner;
+	
+    display: inline-block;
+    font-size: 0px;
+    vertical-align: top;
+    text-align: center;
+}

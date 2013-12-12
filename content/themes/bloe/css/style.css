@@ -93,7 +93,6 @@ margin-left				:100%;
 #wrap-top .logos{
 	position			:absolute;
 	height				:64px;
-	width				:380px;
 	margin-top			:18px;
 	margin-left			:15px;
 	font-size			:24px;
@@ -116,41 +115,30 @@ margin-left				:100%;
 	margin-left			:90px;
 	text-shadow			:1px 1px 0px #000;
 }
-#wrap-top .formSearch{
+#wrap-top #searchform{
 	position			:absolute;
-	margin-left			:650px; 
-	margin-top			:70px;
+	margin-left			:600px; 
+	margin-top			:110px;
 	height				:30px;
-	width				:150px;
 }
-#wrap-top .formQuery{
+#wrap-top #searchform .screen-reader-text{
+	color:#fff;
+}
+#wrap-top #searchform #s{
 	width				:150px;
 	border				:1px solid #d0d0d0;
-	text-indent			:16px; 
+	line-height:20px;
 }
-#wrap-top .formQuery_s{
-	position			:absolute;
+#wrap-top #searchform #searchsubmit{
 	width				:15px;
 	height				:15px;
-	margin				:2px 0 0 2px;
+	margin				:0;
+	margin-left:-25px;
 	padding				:0;
 	border				:0;
-	background			:url(../images/s.png) no-repeat;
+	background			:transparent url(../images/s.png) no-repeat;
 	cursor				:pointer;
-}
-#wrap-top ul{
-	z-index				:999999;
-	margin				:0 -1px 0 0;
-	padding				:100px 0 0 10px;
-	list-style			:none;
-	background			:transparent; 
-	height				:30px;
-	font-weight			:bold;
-}
-#wrap-top li{
-	display				:inline;
-	margin				:0;
-	padding				:0
+	text-indent:-9999px;
 }
 #wrap-top a{
 	float				:left;
@@ -254,7 +242,8 @@ margin-left				:100%;
 	padding				:2px 0 2px 18px;
 	margin-left			:-2px;
 	margin-bottom		:2px;
-	font-weight			:700;
+	
+	font-weight:normal;
 	background			:url(../images/sound_grey.png) no-repeat center left;
 	background-position	:4px;
 	border-bottom		:1px solid #f2f2f2;

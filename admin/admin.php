@@ -27,7 +27,6 @@ if(!defined('_iEXEC')) exit;
 <link href="libs/css/css3-buttons.css" rel="stylesheet" />
 <link href="libs/css/default.css" rel="stylesheet" />
 <link href="libs/css/drop-shadow.css" rel="stylesheet" />
-<link href="libs/css/oops.css" rel="stylesheet" />
 <link href="libs/css/button.css" rel="stylesheet" />
 <link href="libs/css/scroll.css" rel="stylesheet" />
 
@@ -44,13 +43,13 @@ if(!defined('_iEXEC')) exit;
 <link href="libs/css/datepicker.css" rel="stylesheet"/>
 
 <script src="libs/js/jquery.tiptip.js"></script>
-<script src="libs/js/running-script.js"></script>
+<script src="libs/js/running-script.dev.js"></script>
 <script src="libs/js/widget-home.js"></script>
 
 <script src="libs/js/redactor/redactor.js"></script>
 <link href="libs/js/redactor/css/redactor.css" rel="stylesheet"/>
 
-<script src="libs/js/dialog/pbscript.js"></script>
+<script src="libs/js/dialog/pbscript.dev.js"></script>
 <link href="libs/js/dialog/dialog.css" rel="stylesheet"/>
 
 
@@ -64,8 +63,8 @@ if(!defined('_iEXEC')) exit;
 <div id="redactor_modal_overlay_loading" style="display: none;"></div>
 
 <!--Show Dialog loading-->
-<div id="redactor_modal_console"  class="redactor_modal redactor_modal_loading" style="height: auto;display: none; ">
-<div id="redactor_modal_inner_loading">Sedang memperbaharui ....</div>
+<div id="redactor_modal_console"  class="redactor_modal redactor_modal_loading no_frame" style="height: auto;display: none; ">
+<center style="padding:10px;"><div class="_ani_loading"><span style="clear:both">Memuat...</span></div></center>
 </div>
 <!--End Dialog loading-->
 <?php 

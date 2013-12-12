@@ -137,6 +137,9 @@ function get_info( $show = '', $display = false, $filter = 'display' ) {
 		case 'html_type' :
 			$output = get_option('html_type');
 			break;
+		case 'robots' :
+			$output = get_option('robots');
+			break;
 		case 'version':
 			global $the_version;
 			$output = $the_version;
@@ -292,4 +295,50 @@ function noindex() {
  */
 function no_robots() {
 	echo "<meta name='robots' content='noindex,nofollow' />\n";
+}
+/**
+ * Display search form.
+ *
+ * @param boolean $echo
+ * @return string|null
+ */
+function get_search_form( $echo = true ) {
+	do_action( 'pre_get_search_form' );
+	
+	$search_form_template = locate_template( 'searchform.php' );
+	if ( '' != $search_form_template ) {
+		ob_start();
+		require( $search_form_template );
+		$form = ob_get_clean();
+	} else {
+		$form = '<form role="search" method="get" id="searchform" class="searchform" action="' . site_url( '/' ) . '">
+			<div>
+				<label class="screen-reader-text" for="s">Search for:</label>
+				<input type="text" value="' . get_search_query() . '" name="s" id="s" />
+				<input type="submit" id="searchsubmit" value="Search" />
+			</div>
+		</form>';
+	}
+	
+	$result = apply_filters( 'get_search_form', $form );
+	if ( null === $result )
+		$result = $form;
+
+	if ( $echo )
+		echo $result;
+	else
+		return $result;
+}
+
+/**
+ * Retrieve the contents of the search query variable.
+ *
+ * @param bool $escaped
+ * @return string
+ */
+function get_search_query( $escaped = true ) {
+	$query = apply_filters( 'get_search_query', get_query_var( 's' ) );
+	if ( $escaped )
+		$query = esc_sql( $query );
+	return $query;
 }

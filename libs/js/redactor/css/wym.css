@@ -36,7 +36,7 @@ iframe,
 object,
 hr {
 	margin-bottom: 10px;	
-	line-height: 1.5em;		
+	line-height: 1.1em;		
 }
 blockquote {
 	margin-left: 3em;
@@ -55,7 +55,7 @@ ol ul {
 	padding: 0;
 	padding-left: 2em;	
 }
-dl dt { font-weight: bold; }
+dl dt { font-weight:normal; }
 dd { margin-left: 1em;}
 
 table {
@@ -68,7 +68,7 @@ table td {
 }
 table thead td {
 	border-bottom: 2px solid #000 !important;
-	font-weight: bold;
+	font-weight:normal;
 }
 code, pre {
 	font-family: monospace sans-serif; 
@@ -90,7 +90,7 @@ hr {
 }
 
 h1, h2, h3, h4,h5 {
-	font-weight: bold;	
+	font-weight:normal;	
 	margin-bottom: 10px;
 }
 

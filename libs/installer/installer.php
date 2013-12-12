@@ -234,7 +234,7 @@ if(isset($_POST['step_1'])
 	$mysql_pass 	= esc_sql( $mysql_pass );
 	$mysql_db_name 	= esc_sql( $mysql_db_name );
 	$db_prefix 		= esc_sql( $db_prefix );
-	$db_prefix		= preg_replace("/[^0-9a-zA-Z]/i", '', $db_prefix);
+	$db_prefix		= preg_replace("/[^0-9a-zA-Z_]/i", '', $db_prefix);
 	
 	if(!empty( $hostname )
 	&& !empty( $mysql_user )

@@ -14,6 +14,7 @@ if(!defined('_iEXEC')) exit;
 <meta charset="<?php get_info( 'charset', true ); ?>">
 <meta name="Description" content="<?php get_info( 'description', true ); ?>">
 <meta name="Keywords" content="<?php get_info( 'keywords', true ); ?>">
+<meta name="Robots\" content="<?php get_info( 'robots', true ); ?>">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link href="<?php echo site_url(); ?>/libs/css/colors.css" rel="stylesheet" />
 <link href="<?php echo site_url(); ?>/libs/css/table.css" rel="stylesheet" />
@@ -38,7 +39,7 @@ if(!defined('_iEXEC')) exit;
 </div>
 <div class="mlmenu horizontal fade inaccesible">
 <ul>
-<?php echo dynamic_menus(2, 'class="horizontal fade"', false); ?>
+<?php echo dynamic_menus(1, 'class="horizontal fade"', false); ?>
 </ul>
 </div>  
 <form id="searching" action="#" method="post"><input type="text" value="" placeholder="Searching here..." class="searching-text" name="q"><button class="searching-button">Go</button></form>

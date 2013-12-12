@@ -201,8 +201,13 @@ $plugins 	= get_dir_plugins( $plugin_name . $file );
 
 if( file_exists( plugin_path .'/'. $plugin_name . '/admin.php' ) && !empty($plugin_name) ){
 	include plugin_path .'/'. $plugin_name . '/admin.php';
+}else{
+	//tampilkan tombol direct dan pesan
+	//redirect('?admin&sys=plugins'); 
+	$oops_title = "Plugin tidak ditemukan!";
+	$oops_msg = "Ups maaf plugin \"<strong>$plugin_name</strong>\" belum terinstall, silahkan unduh di situs pengembang";
+	the_oops_message( $oops_title, $oops_msg, 'simple', true, 'notfound' );
 }
-else redirect('?admin&sys=plugins'); 
 
 break;
 }

@@ -16,6 +16,10 @@ function get_widget(){
 		'link'  => '?admin&amp;sys=options'
 	);
 	$actions[] = array(
+		'title' => 'Background',
+		'link'  => '?admin&amp;sys=options&go=background'
+	);
+	$actions[] = array(
 		'title' => 'Gravatar',
 		'link'  => '?admin&amp;sys=options&go=gravatar'
 	);

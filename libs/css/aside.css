@@ -34,7 +34,7 @@ div.aside > div.section{
 div.aside > div.section .head
 {
 	color:#999;
-	font-weight:700;
+	font-weight:normal;
 }
 div.aside > div.section .p.head{
 	font-family: "LGB";
@@ -44,6 +44,7 @@ div.aside > div.section .p.head span{
 	padding:0 5px;
 	float:right;
 	text-decoration:none;
+	font-weight:normal;
 	
 	display:inline-block;
 	background:#F3F3F3;

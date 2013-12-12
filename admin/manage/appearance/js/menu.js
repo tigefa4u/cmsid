@@ -210,7 +210,7 @@ jQuery(function($) {
 
 	/* add menu group
 	------------------------------------------------------------------------- */
-	$('#add-group a').click(function() {
+	$('a#add-group').click(function() {
 		gbox.show({
 			type: 'ajax',
 			url: $(this).attr('href'),

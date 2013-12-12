@@ -45,7 +45,7 @@ function dynamic_menus_group_title($group_id) {
 	
 	$data 	= '';
 	$group_id = esc_sql( $group_id );
-	$query 	= mysql_query("SELECT title FROM $db->menu_group WHERE id = '$group_id'");
+	$query 	= mysql_query("SELECT title FROM $db->menu WHERE id = '$group_id' AND group_id = 0");
 	$data 	= mysql_fetch_array($query);		
 	return $data['title'];
 }
@@ -54,7 +54,7 @@ function dynamic_menus_groups() {
 	global $db;
 	
 	$data = array();
-	$query 	= mysql_query("SELECT id, title FROM $db->menu_group");
+	$query 	= mysql_query("SELECT id, title FROM $db->menu WHERE group_id = 0");
 	while( $row = mysql_fetch_array($query) ){
 		$data[] = array( 'id' => $row['id'],'title' => $row['title'] );
 	}
@@ -210,7 +210,7 @@ function add_menu_on_group($group_id) {
 	<label for="menu-class">Class</label>
 	<input type="text" name="class" id="menu-class" style="width:95%">
 	'.dynamic_menus_box($group_id).'
-	<p class="buttons">
+	<p class="buttons"><br>
 	<input type="hidden" name="group_id" value="'.$group_id.'">
 	<input id="add-menu" type="submit" class="button" value="Add Menu">
 	</p>

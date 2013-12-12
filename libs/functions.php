@@ -672,6 +672,14 @@ function count_comment($id){
 		
 }
 
+function get_status_comment($id){
+	global $db;
+	$id = esc_sql( filter_int($id) );
+	$post_results = $db->query("SELECT * FROM $db->post WHERE id='$id'");
+	$post_result = $db->fetch_obj($post_results);
+	return $post_result->status_comment;
+}
+
 function get_comment_login(){
 	global $login;
 	return $login->check();
@@ -780,7 +788,7 @@ function security_posted( $file_name = null, $cek_ip_total = false, $timer = 10 
 	$ip = get_ip_address();
 	$pip_array1 = $pip_array2 = array();
 	
-	if( checked_option( 'security_pip' ) ){
+	if( checked_option( 'security_pip' ) &&  get_option('security_pip') != '' ){
 		
 		$option_pip = get_option('security_pip');
 		//echo 'before DELETE:'.$option_pip.'<br>';
@@ -948,6 +956,9 @@ function avatar_url( $user_login, $w = 120, $h = 120, $zc = 1 ){
 }
 
 function get_file_data( $file, $default_headers, $context = '' ) {
+	if(!file_exists($file) ) 
+	return false;
+	
 	$fp 		= fopen( $file, 'r' );
 	$file_data 	= fread( $fp, 8192  ); //8kiB
 	fclose( $fp );
@@ -1289,4 +1300,10 @@ function doing_feed(){
 	
 	//$rssfeed_x = array_merge_simple($rssfeed_x, array( 'display' => $display) ); 	
 	return json_encode( $_temp );
+}
+
+function try_xml( $url ){   		
+	$xml = get_content($url);		
+	$val = simplexml_load_string($xml);
+	return $val;
 }

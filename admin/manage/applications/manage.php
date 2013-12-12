@@ -4,7 +4,7 @@
  * @dir: admin/manage/users
  */
 if(!defined('_iEXEC')) exit;
-global $db, $login, $widget, $applications;
+global $db, $login, $widget;
 $go 			= filter_txt($_GET['go']);
 $act			= filter_txt($_GET['act']);
 $to				= filter_txt($_GET['to']);
@@ -13,8 +13,8 @@ $pub			= filter_txt($_GET['pub']);
 $path  			= filter_txt($_GET['path']);
 $file 			= filter_txt($_GET['file']);
 $app_name  		= filter_txt($_GET['app_name']);
-?>
-<?php
+
+$applications = get_dir_applications();
 
 switch($go){
 default:
@@ -37,6 +37,9 @@ if( isset($_POST['submitDelete']) ) {
 		delete_applications($key); 			
 		add_activity('manager_applications','menghapus aplikasi','app');
 	}
+}
+if( isset($_POST['submitDelete']) || $act == 'del' && !empty($app_name)  ) {
+	redirect('?admin&sys=applications');
 }
 
 ?>
@@ -95,7 +98,7 @@ $header_menu = '<div class="header_menu_top">';
 $header_menu.= '<input type="submit" name="submitDelete" class="primary button on l red" value="Delete the Checked" id="checkbox_go">';
 $header_menu.= '<input name="Reset" type="reset" value="Cencel" class="button r">';
 $header_menu.= '</div>';
-$header_menu.= '<a href="?admin&sys=installer&type=applications" class="button button3">+ New</a>';
+$header_menu.= '<a href="?admin&sys=installer&type=applications" class="button">+ New</a>';
 add_templates_manage( $content, 'Applications Manager', $header_menu, null, $form );
 
 break;

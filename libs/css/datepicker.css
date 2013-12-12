@@ -3,6 +3,7 @@ top: 0;
 left: 0;
 padding: 4px;
 margin-top: 1px;
+z-index:8;
 }
 .dow {
 border-top: 1px solid #ddd !important;

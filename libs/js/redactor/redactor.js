@@ -611,10 +611,10 @@ var RTOOLBAR = {};
 			html = html.replace(/<b\b[^>]*>([\w\W]*?)<\/b[^>]*>/gi,'<strong>$1</strong>');
 			html = html.replace(/<i\b[^>]*>([\w\W]*?)<\/i[^>]*>/gi,'<em>$1</em>');
 			html = html.replace(/<strike\b[^>]*>([\w\W]*?)<\/strike[^>]*>/gi,'<del>$1</del>');
-			html = html.replace(/<span(.*?)style="font-weight: bold;">([\w\W]*?)<\/span>/gi, "<strong>$2</strong>");
+			html = html.replace(/<span(.*?)style="font-weight:normal;">([\w\W]*?)<\/span>/gi, "<strong>$2</strong>");
 			html = html.replace(/<span(.*?)style="font-style: italic;">([\w\W]*?)<\/span>/gi, "<em>$2</em>");
-			html = html.replace(/<span(.*?)style="font-weight: bold; font-style: italic;">([\w\W]*?)<\/span>/gi, "<em><strong>$2</strong></em>");
-			html = html.replace(/<span(.*?)style="font-style: italic; font-weight: bold;">([\w\W]*?)<\/span>/gi, "<strong><em>$2</em></strong>");
+			html = html.replace(/<span(.*?)style="font-weight:normal; font-style: italic;">([\w\W]*?)<\/span>/gi, "<em><strong>$2</strong></em>");
+			html = html.replace(/<span(.*?)style="font-style: italic; font-weight:normal;">([\w\W]*?)<\/span>/gi, "<strong><em>$2</em></strong>");
 
 			return html;
 		},

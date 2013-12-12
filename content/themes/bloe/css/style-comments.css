@@ -10,7 +10,8 @@
 #pings{ margin-bottom:40px; }
 ul.children{ margin-left:0px; }
 ol.commentlist{ margin:20px 0px 0px 0px; }
-cite.fn{ font-size:14px; font-weight:bold; letter-spacing:-0.05em; display:block; padding-top:9px; }
+cite.fn{ font-size:14px; 
+	font-weight:normal; letter-spacing:-0.05em; display:block; padding-top:9px; }
 cite.fn a, cite.fn a:hover{ color:#333; text-decoration:none; }
 span.says{ display:none; }
 .commentlist li{ margin:0px 0px 5px 0px; padding:10px; background:#f6f6f6; list-style:none; border:1px solid #e9e9e9; }

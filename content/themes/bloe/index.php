@@ -14,6 +14,7 @@ if(!defined('_iEXEC')) exit;
 <meta charset="<?php get_info( 'charset', true ); ?>">
 <meta name="Description" content="<?php get_info( 'description', true ); ?>">
 <meta name="Keywords" content="<?php get_info( 'keywords', true ); ?>">
+<meta name="Robots\" content="<?php get_info( 'robots', true ); ?>">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link href="<?php get_template_directory_uri(true); ?>/css/default.css" rel="stylesheet" type="text/css" />
 <link href="<?php get_template_directory_uri(true); ?>/css/message.css" rel="stylesheet" type="text/css" />
@@ -37,14 +38,10 @@ $(document).ready(function(){
 <div id="wrap">
 <div id="wrap-top">
 <a href="#" class="logos"><img src="<?php get_template_directory_uri(true); ?>/images/logo.png"><div class="logotitle"><?php get_info( 'name', true ); ?></div></a><div class="slogan"><?php get_info( 'desc', true ); ?></div> 
-<form  method="get" class="formSearch" action="<?php echo site_url()?>/index.php">
-<input type="submit"value="" class="formQuery_s">
-<input type="text" name="q" class="formQuery"  value="Search..." onfocus="if(this.value=='Search...'){this.value=''}" onblur="if(this.value==''){this.value='Search...'}"/>
-<input type="hidden" name="com" value="search" />
-</form>
+<?php get_search_form(); ?>
 <div class="mlmenu horizontal fade inaccesible">
 <ul>
-<?php echo dynamic_menus(2, 'class="horizontal fade"', false); ?>
+<?php echo dynamic_menus(1, 'class="horizontal fade"', false); ?>
 </ul>
 </div> 
 </div>

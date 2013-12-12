@@ -4,7 +4,7 @@
  * @dir: admin/manage/appearance
  */
 if(!defined('_iEXEC')) exit;
-global $db, $widget, $registered_widgets, $registered_sidebars, $sidebars_widgets, $registered_widget_controls, $applications;
+global $db, $widget, $registered_widgets, $registered_sidebars, $sidebars_widgets, $registered_widget_controls;
 
 $go 		= filter_txt($_GET['go']);
 $act		= filter_txt($_GET['act']);
@@ -19,6 +19,8 @@ $app_id  	= filter_txt($_GET['app_id']);
 $sidebar_id = filter_txt($_GET['sidebar_id']);
 $widget_id  = filter_txt($_GET['widget_id']);
 $widget_key = filter_int($_GET['widget_key']);
+
+$applications = get_dir_applications();
 
 switch($go){
 default:
@@ -102,26 +104,32 @@ if( $act == 'delete' && !empty($theme) ){
 <div style="clear:bolth"></div>
 <strong>Available theme</strong>
 <div style="border-bottom:1px solid #eeeeee"></div>
+</div>
 <?php 
 $count_available = $count_available_all = 0;
 $theme_arr = themes_available();
 
+$warna = 'fff';
 if ( @count($theme_arr) > 1 ){
 	foreach($theme_arr as $file){
 		if( $file != get_option('template') ):
+			$warna  = ($warna == 'fff') ? 'f8f8f8' : 'fff';
+			echo "<div style=\"background:#$warna; padding:0 5px;\">";
 			load_style_info($file);
 			$count_available++;
+			echo '</div>';
 		endif;
 		$count_available_all++;
 	}
 }else{	
 ?>
+<div class="padding">
 <p>Theme not available</p>
+</div>
 <?php 
 }
 ?>
 
-</div>
 <?php 
 $content = ob_get_contents();
 ob_end_clean();
@@ -383,7 +391,7 @@ foreach ( $sort as $widget ) {
 <?php
 }
 ?>
-  </select><br />
+  </select><br/><br/>
   <input name="submit" type="submit" value="Add" />
 </form>
 </div>
@@ -743,7 +751,6 @@ foreach ((array)$get_menu_groups_sort as $data_get_menu) :
 ?>
 <li id="group-<?php echo $data_get_menu['id']; ?>"><a href="?admin&sys=appearance&go=menus&group_id=<?php echo $data_get_menu['id']; ?>"><?php echo $data_get_menu['title']; ?></a></li>
 <?php endforeach; ?>
-<li id="add-group"><a href="?request&load=libs/ajax/menu-group.php&aksi=add" title="Add Menu Group">+</a></li>
 </ul>
 <div class="clear" style="border-top:2px solid #ccc;"></div>
 
@@ -786,8 +793,8 @@ echo $group_menu_ul;
 <?php
 $content = ob_get_contents();
 ob_end_clean();
-
-add_templates_manage( $content, 'Menus Manager');
+$header_menu = '<a id="add-group" href="?request&load=libs/ajax/menu-group.php&aksi=add" class="button" title="Add new group">&nbsp;&nbsp;+&nbsp;&nbsp;</a>';
+add_templates_manage( $content, 'Menus Manager', $header_menu);
 break;
 case 'custom-theme':
 

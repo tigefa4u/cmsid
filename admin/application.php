@@ -5,9 +5,7 @@
  */
 if(!defined('_iEXEC')) exit;
 
-function dir_applications() {
-	global $applications;
-	
+function get_dir_applications() {	
 	$component = array();	
 	$component_files = get_mu_apps();
 	
@@ -29,7 +27,7 @@ function dir_applications() {
 	}
 	uasort( $component, create_function( '$a, $b', 'return strnatcasecmp( $a["Name"], $b["Name"] );' ));
 	
-	$applications = $component;
+	return $component;
 
 }
 
@@ -41,6 +39,7 @@ function get_applications_data( $file ) {
 		'Version' 		=> 'Version',
 		'Description' 	=> 'Description',
 		'Author' 		=> 'Author',
+		'APIKey' 		=> 'API Key',
 		'AuthorURI' 	=> 'Author URI',
 	);
 

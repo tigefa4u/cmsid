@@ -82,7 +82,7 @@ form1 {
 /*
 label {
 	display:block;
-	font-weight:bold;
+	font-weight:normal;
 	margin:5px 0;
 }
 */
@@ -161,7 +161,7 @@ font-weight:normal;
 	height:25px;
 	background:url('../images/button-grad-vs.png') repeat-x top left;
 	color:#fff;
-	font-weight:bold;
+	font-weight:normal;
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 15px;
 	cursor:pointer;
@@ -414,6 +414,13 @@ h1, h2, h3 ,h4{
 	background: url(../images/page.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
+.post-ilustrasi{
+	background-color: #f8f8f8;
+	margin-right:5px;
+	border: 1px solid #ddd;
+	padding:1px;
+	text-align:center;
+}
 
 
 .bg {
@@ -568,7 +575,7 @@ h1, h2, h3 ,h4{
 }
 #footer a { 
 	text-decoration: none; 
-	font-weight: bold;	
+	font-weight:normal;	
 	color: #000;
 }
 #footer .footer-left{
@@ -697,7 +704,7 @@ border: 1px solid #f2f2f2;padding: 8px;background-color: #f2f2f2;
     color : #fff; 
     font-family : verdana, arial, helvetica, sans-serif; 
     font-size : 8pt; 
-    font-weight : bold; 
+    font-weight:normal; 
     background:url('../images/button-grad-vs.png') repeat-x top left;
     border : 1px solid #dadada; 
     cursor : pointer; 

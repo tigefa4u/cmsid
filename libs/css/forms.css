@@ -15,7 +15,7 @@ form{
 	margin-right:-5px
 }
 form  .required {
-    font-weight:bold;
+    font-weight:normal;
     color:#F00;
 }
 textarea {
@@ -35,24 +35,45 @@ input,
 select,
 textarea,
 label {
-    margin-bottom:3px;
 }
 
 button,
 input,
 select,
 textarea {
-    padding: 2px;
-	padding-bottom:5px;
-    padding: 6px 2px;
-	padding-top:5px;
     border: 1px solid #ddd;
 	font-family: "LG";
 }
 
-input[type="text"],input[type="password"]{
-	padding-top:6px;
-	padding-bottom:6px;
+select{	
+ 	padding:3px;
+    padding-top:7px;
+	padding-bottom:7px;
+}
+
+input,
+input[type="text"],
+input[type="password"]{	
+	line-height:20px;
+	height:20px;
+	padding-top:4px;
+	padding-bottom:4px;
+}
+
+textarea{
+	min-height:27px;
+ 	padding:3px;
+    padding-top:7px;
+	padding-bottom:7px;
+}
+
+button,input[type="button"], 
+input[type="submit"], 
+input[type="reset"], 
+input[type="submit"] .button, 
+input[type="reset"] .button{	
+	line-height:31px;
+	height:31px;
 }
 
 button,
@@ -98,8 +119,6 @@ button.placeholder-text,input.placeholder-text, textarea.placeholder-text  {
 
 button,input[type="button"], input[type="submit"], input[type="reset"], input[type="submit"] .button, input[type="reset"] .button{
 	font-size:11px;
-	line-height:27px;
-	height:28px;
 	font-family: "LG";
 }
 
@@ -115,7 +134,7 @@ button,input[type="button"],input[type="submit"], input[type="reset"]{
 	-moz-transition:border-color .20s;
 	-o-transition:border-color .20s;
 	transition:border-color .20s;
-	padding:5px 4px;
+	/*padding:5px 4px;
 	
 	/* color default*/
 	background:#F3F3F3;
@@ -140,7 +159,7 @@ button::-moz-focus-inner,input[type="button"]::-moz-focus-inner,input[type="subm
 
 input[type="file"]{
     border: 1px solid #ddd;
-	padding:3px;	
+	width:90%;
 		
 	background: #f7f7f7; /* Old browsers */
 	background: -moz-linear-gradient(top,  #f7f7f7 0%, #f3f3f3 100%); /* FF3.6+ */
@@ -154,7 +173,7 @@ input[type="file"]{
 
 .button.on{
 	font-family: "LGB";
-	/*font-weight:bold;*/
+	/*font-weight:normal;*/
 	/*margin-right:-5px;*/
 }
 input[type="submit"].button,input[type="Reset"].button{
@@ -370,4 +389,9 @@ textarea,
 label {
     padding-left:5px;
 	padding-right:5px;
+}
+
+
+label {
+	padding-left:0;
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<themes>
+    <name>Portal</name>
+    <version>1.3</version>
+    <creationDate>February 11, 2013</creationDate>
+    <author>Eko Azza</author>
+    <authorEmail>admin@cmsid.org</authorEmail>
+    <apiKey>j1MgsoPN8cdH</apiKey>
+    <authorUrl>http://www.cmsid.org</authorUrl>
+    <copyright>2012</copyright>
+    <license>${licence}</license>
+    <description>Theme Portal ini merupakan theme adaptasi dari wordpress yang saya modifikasi, agar bisa digunakan pada cmsid khususnya untuk versi 2.2 dan theme ini dikhususkan untuk para pembuat blog atau portal berita</description>
+</themes>

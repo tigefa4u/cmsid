@@ -1,0 +1,228 @@
+/* 1. Reset */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td{ margin:0px; padding:0px; }
+table{ border-collapse:collapse; border-spacing:0px; }
+table tr td{padding:2px;}
+tr{ vertical-align:top; }
+fieldset, img{ border:0px; }
+abbr, acronym{ border:0px; }
+address, caption, cite, code, dfn, em, strong, th, var{ font-style:normal; font-weight:normal; }
+h1, h2, h3, h4, h5, h6{ font-size:100%; font-weight:normal; }
+ol, ul{ list-style:none; }
+caption, th{ text-align:left; }
+q:before, q:after{ content:''; }
+.clear{ clear:both; }
+.right{ float:right; }
+.left{ float:left; }
+
+/* 2. Defaults */
+body{ background:#ddd; background-image:url(../images/bg.jpg); background-repeat:repeat-x; font:12px/17px Arial, Helvetica, sans-serif; color:#222; }
+input{ font-family:Arial, Helvetica, sans-serif; }
+.thumb img{ background:#fff; padding:1px; border:1px solid #f0f0f0; }
+.rss{ background:url(../images/rss.gif) no-repeat 4px 1px; padding:0px 0px 0px 19px !important; }
+
+/* 3. Hyperlinks */
+a, a:visited, a:active{ color:#222; text-decoration:none; }
+a:hover{ color:#16387c; text-decoration:underline; }
+a:focus, a:hover, a:active{ outline:none; }
+a img{ border:none; }
+
+/* 4. Advertisement */
+.ad468x60{ width:468px; height:60px; }
+.ad300x250{ width:300px; height:250px; margin:0px 0px 10px 0px; }
+.ad160x600{ width:160px; height:600px; margin:0px 0px 10px 0px; }
+
+/* 5. Search Form */
+#searchform{ margin:0px 0px 0px 10px; }
+.searchinput{ width:120px; height:13px; padding:2px 2px 2px 2px; font-size:11px; color:#666; border:1px solid #e6e6e6; }
+.searchsubmit{ background:url(../images/searchbg.gif) repeat-x center; height:19px; padding:1px 2px 1px 2px; font-size:11px; font-weight:normal; color:#333; border:1px solid #e6e6e6; cursor:pointer; }
+
+/* 6. Header */
+#header{ width:982px; height:60px; margin:10px auto 5px auto; padding:5px 0px; line-height:60px; }
+#headline{ width:982px; margin:0px auto; padding:5px 0px 5px 0px; font-size:.9em; line-height:22px; border-bottom:2px solid #16387c; }
+.imagelogo{ float:left; cursor:pointer; }
+.textlogo{ float:left; margin:0px 0px 0px 5px; font-family:impact; font-size:48px; line-height:60px; }
+.textlogo a, .textlogo a:hover{ color:#16387c; text-decoration:none; }
+.vertical .home{ background:#f9fafa url(../images/home-small.gif) no-repeat 2px 7px !important; }
+
+/* 7. Vertical Menu */
+.vertical ul{ width:160px; border-top:1px solid #e6e6e6; }
+.vertical li a{ display:block; background:#f9fafa url(../images/arrow_right.gif) no-repeat 2px 6px; width:131px; padding:6px 10px 6px 17px; text-decoration:none; font-size:1em; font-weight:normal; color:#222; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; }
+.vertical li a:hover{ color:#16387c; text-decoration:none; }
+.vertical li{ display:inline; }
+.vertical li ul{ position:absolute; margin:-31px 0px 0px 159px; }
+
+/* 8. Horizontal Menu */
+.horizontal ul{ display:block; list-style-type:none; }
+.horizontal li{ float:left; display:inline; background:url(../images/bullet.gif) no-repeat center right; padding:0px; list-style:none; }
+.horizontal li a{ float:left; display:block; padding:0px 10px; text-decoration:none; border-left:none; }
+.horizontal li li{ background:none !important; }
+.horizontal li li a{ padding:6px 10px; line-height:16px; border-top:none; border-bottom:1px solid #e6e6e6; }
+.horizontal li ul{ display:block; background:#f9fafa; position:absolute; width:134px; height:auto; margin-top:20px; margin-left:-1px; border-top:1px solid #e6e6e6; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; }
+.horizontal li li ul{ position:absolute; margin-top:.1em; margin-left:100px; }
+.horizontal li ul li a{ width:114px; }
+.inaccesible li ul{ display:none; }
+
+/* 9. Wrappers */
+#wrapper{ background:#fff; width:960px; margin:0px auto; padding:10px; box-shadow:0px 0px 5px #bbb; -moz-box-shadow:0px 0px 5px #bbb; -webkit-box-shadow:0px 0px 5px #bbb; }
+#leftwrapper{ float:left; width:650px; }
+#pagewrapper{ float:left; width:790px; }
+
+/* 10. Columns */
+#column1{ float:left; width:160px; }
+#column2{ float:right; width:480px; padding:0px 0px 0px 0px; }
+#column3{  }
+
+/* 11. Featured Content Slider */
+#slider{ background:#f9fafa; width:473px; margin:0px 0px 10px 0px; padding:6px 0px 6px 5px; border:1px solid #e6e6e6; }
+#featured{ width:373px; padding-right:95px; position:relative; height:236px; background:#222; }
+#featured ul.ui-tabs-nav{ position:absolute; background:#333; top:0px; left:373px; width:95px; list-style:none; color:#fff; }
+#featured ul.ui-tabs-nav li{ float:left; padding:0px 0px 1px 0px; }
+#featured ul.ui-tabs-nav li img{ float:left; background:#fff; margin:3px; padding:1px; border:1px solid #666; }
+#featured li.ui-tabs-nav-item a{ display:block; background:#444; height:54px; padding:2px; }
+#featured li.ui-tabs-nav-item a:hover{ background:#555; }
+#featured li.ui-tabs-selected{ padding:0px 0px 1px 0px; }
+#featured ul.ui-tabs-nav li.ui-tabs-selected a{ background:#333; }
+#featured .ui-tabs-panel{ background:none; width:373px; margin:0px; padding:0px; position:relative; }
+#featured .ui-tabs-panel .info{ position:absolute; background:#111; width:357px; bottom:4px; left:0px; opacity:.75; filter:alpha(opacity=75); padding:8px; }
+#featured .info h2{ font-size:18px; color:#fff; line-height:22px; overflow:hidden; }
+#featured .info a{ text-decoration:none; color:#fff; }
+#featured .info a:hover{ text-decoration:underline; }
+#featured .ui-tabs-hide{ display:none; }
+
+/* 12. Postbox */
+.postbox{ width:235px; margin:0px 0px 10px 0px; }
+.postbox h1{ background:#f9fafa url(../images/menu.jpg) repeat-x; height:28px; padding:0px 0px 0px 10px; font-size:1em; font-weight:normal; line-height:29px; border:1px solid #e6e6e6; }
+.postbox h1 a, .postbox h1 a:visited{ color:#222; }
+.postbox h1 a:hover{ color:#16387c; text-decoration:none; }
+.postbox h2{ font-size:1em; font-weight:normal; line-height:16px; }
+.postbox h2 a, .postbox h2 a:visited{ color:#16387c; }
+.postbox ul{ padding:2px 0px 0px 0px; }
+.postbox ul li{ background:url(../images/bullet.gif) no-repeat 0px 7px; padding:0px 0px 6px 7px; font-size:1em; line-height:15px; }
+.postbox ul li a, .postbox ul li a:visited{ color:#222; }
+.postbox ul li a:hover{ color:#16387c; }
+.boxcontent{ background:#fff; padding:10px; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; }
+.boxcontent h5{ margin:0px; padding:3px 0px 4px 0px; color:#666; }
+.boxcontent h5 a, .boxcontent h5 a:hover{ color:#666; }
+.more{ margin:10px 0px 5px 0px; }
+
+/* 13. Content */
+#fullcontent{ float:left; background:#fff; width:938px; padding:10px; border:1px solid #e6e6e6; }
+#content{ float:right; background:#fff; width:598px; padding:10px; border:1px solid #e6e6e6; }
+.pagetitle{ padding:3px 0px 10px 0px; font-size:18px; font-weight:normal; }
+.posttitle{ margin:0px 0px 10px 0px; font-size:22px; color:#333; line-height:24px; }
+.posttitle a, .posttitle a:visited{ color:#222; }
+.postmeta{ padding:20px 0px 5px 0px; }
+.browse{ padding:0px 0px 7px 0px; font-size:12px; color:#333; border-bottom:1px solid #e6e6e6; }
+.browse a, .browse a:visited{ color:#16387c; }
+
+/* 14. Entry */
+.entry{ padding:15px 0px 10px 0px; color:#222; line-height:1.4em; border-top:1px solid #e6e6e6; }
+.entry p{ padding-bottom:10px; }
+.entry strong{ font-weight:normal; }
+.entry em{ font-style:italic; font-weight:normal; }
+.entry strong em, .entry em strong{ font-style:italic; font-weight:normal; }
+.entry h1{ font-size:20px; font-weight:normal; padding:0px 0px 7px 0px; }
+.entry h2{ font-size:18px; font-weight:normal; padding:0px 0px 7px 0px; }
+.entry h3{ font-size:16px; font-weight:normal; padding:0px 0px 7px 0px; }
+.entry h4{ font-size:14px; font-weight:normal; padding:0px 0px 7px 0px; }
+.entry h5{ font-size:13px; font-weight:normal; padding:0px 0px 7px 0px; }
+.entry h6{ font-size:12px; font-weight:normal; padding:0px 0px 7px 0px; }
+.entry a{ color:#16387c; }
+.entry a:hover{ color:#16387c; text-decoration:underline; }
+.entry a img{ border:none; }
+.entry ul{ margin:0px 0px 0px 7px; padding-bottom:10px; list-style:none; }
+.entry ol{ margin:0px 0px 10px 25px; list-style-type:decimal; }
+.entry ol ol{ list-style:upper-alpha; }
+.entry ol ol ol{ list-style:lower-roman; }
+.entry ol ol ol ol{ list-style:lower-alpha; }
+.entry ul ul, .entry ol ol, .entry ul ol, .entry ol ul{ margin-bottom:0px; }
+.entry ul li{ background:url(../images/bullet.gif) no-repeat 0px 9px; padding:3px 0px 3px 8px; font-size:12px; line-height:15px; }
+.entry ol li{ padding:3px 0px 3px 0px; font-size:12px; line-height:15px; }
+.entry li a:link, .entry li a:visited{ color:#222; }
+.entry li a:hover{ color:#16387c; }
+.entry li ul{ margin:0px; padding:0px; }
+.entry del{ text-decoration:line-through; color:#aaa; }
+.entry ins{ text-decoration:underline; font-weight:normal; }
+.entry code{ display:block; background:#f9f9f9; margin:10px 0px; padding:10px; font:12px Monaco, monospace; color:#333; border-left:4px solid #e6e6e6; }
+.entry blockquote{ background:#f9f9f9; font-size:12px; line-height:16px; color:#333; margin:15px 0px; padding:10px; border:1px solid #e6e6e6; }
+.entry blockquote cite{ display:block; margin:5px 10px 5px 10px; font-size:12px; color:#555; font-style:italic; text-align:left; }
+.entry blockquote.alignright{ width:40%; margin:0px 0px 10px 1em; }
+.entry blockquote.alignleft{ width:40%; margin:0px 1em 10px 0px; }
+.entry blockquote p{ margin:0px; }
+.entry hr{ background:#e6e6e6; color:#e6e6e6; clear:both; width:100%; height:1px; margin:15px 0px; border:none; }
+.entry input, .entry textarea{ font-size:1em; padding:3px; }
+.tags{ background:#fff url(../images/tag.gif) no-repeat 0px 0px; margin:5px 0px 0px 0px; padding:0px 0px 0px 20px; color:#222; }
+.tags a, .tags a:visited{ color:#222; text-decoration:none; }
+.tags a:hover{ color:#16387c; text-decoration:underline; }
+
+/* 15. Archive */
+.archive{ padding:15px 0px; border-bottom:1px solid #e6e6e6; }
+.archive .thumb{ padding:0px 10px 0px 0px; }
+.archive h2{ margin:0px 0px 8px 0px; font-size:18px; line-height:20px; }
+.archive h2 a, .archive h2 a:visited{ color:#222; }
+
+/* 16. Images */
+img.centered{ display:block; margin-left:auto; margin-right:auto; margin-bottom:10px; padding:0px; }
+img.alignnone{ padding:0px; margin:0px 0px 10px 0px; display:inline; }
+img.alignright{ padding:0px; margin:0px 0px 10px 10px; display:inline; }
+img.alignleft{ padding:0px; margin:0px 10px 10px 0px; display:inline; }
+.aligncenter{ display:block; margin-left:auto; margin-right:auto; margin-bottom:10px; }
+.alignright{ float:right; margin:0px 0px 10px 10px; }
+.alignleft{ float:left; margin:0px 10px 10px 0px; }
+.wp-caption{ background:#F7F7F7; text-align:center; padding:4px 0px 5px 0px; border:1px solid #e6e6e6; }
+.wp-caption img{ margin:0px 0px 5px 0px; padding:0px; border:0px; }
+.wp-caption p.wp-caption-text{ margin:0px; padding:0px; font-size:11px; font-weight:normal; line-height:12px; }
+
+/* 17. Sidebar */
+#pageright{ float:right; width:160px; }
+#sidebar{ float:right; background:#fff; width:300px; }
+#sidebar li ul{ border:none; }
+#sidebar a, #sidebar a:visited{ color:#222; }
+#sidebar a:hover{ color:#16387c; }
+.leftsidebar{ width:160px; margin:10px 0px 0px 0px; }
+.box{ background:#fff; margin:0px 0px 10px 0px; padding:5px 10px 10px 10px; color:#222; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; }
+
+/* 18. Tabber */
+.tabber{ width:300px; margin:0px 0px 10px 0px; }
+.tabber ul{ background:#fff; }
+.tabs{ display:block; margin:0px 1px 0px 0px; }
+.tabs li{ float:left; display:inline; background:#f9fafa url(../images/menu.jpg) repeat-x; }
+.tabs li a{ display:block; margin:0px -1px 0px 0px; padding:6px 10px; font-size:1em; font-weight:normal; border:1px solid #e6e6e6; }
+.tabs li a:hover{ background:#fff; color:#16387c; text-decoration:none; }
+.tabs li a.selected, .tabs li a.selected:hover{ background:#fff; color:#16387c; border-bottom:1px solid #fff; }
+.tabcontent{ display:none; width:278px; margin:-1px 0px 0px 0px; padding:10px 10px 5px 10px; border:1px solid #e6e6e6; }
+.tabcontent li{ background:#fff url(../images/bullet.gif) no-repeat 0px 8px; padding:0px 0px 5px 8px; }
+
+/* 19. Widgets */
+.fullwidget{ width:300px; }
+.leftwidget{ float:left; width:145px; }
+.rightwidget{ float:right; width:145px; }
+.leftsidebar ul li, .fullwidget ul li, .leftwidget ul li, .rightwidget ul li, #pageright ul li{ background:#fff url(../images/bullet.gif) no-repeat 0px 13px; padding:5px 0px 0px 8px; }
+.leftsidebar h3, .leftwidget h3, .rightwidget h3, .fullwidget h3, #pageright h3{ background:#f9fafa url(../images/menu.jpg) repeat-x; height:28px; padding:0px 10px; font-size:1em; font-weight:normal; line-height:29px; border:1px solid #e6e6e6; }
+.leftsidebar h3 a{ text-decoration:none; line-height:29px; }
+.leftsidebar a{ font-size:1em; line-height:15px; }
+.leftsidebar h2 a{ color:#16387c; }
+.leftsidebar span{ float:right; width:92px; }
+.leftnews{ padding:7px 0px 7px 0px; border-bottom:1px dotted #e6e6e6; }
+.leftnews .thumb{ float:left; }
+.rsswidget img{ width:12px; height:12px; }
+
+/* 20. Calendar*/
+#wp-calendar{ width:100%; }
+#wp-calendar, #wp-calendar th, #wp-calendar caption{ text-align:center; }
+#wp-calendar th{ background:#f5f5f5; padding:3px; border:1px solid #f0f0f0; }
+#wp-calendar td{ padding:5px 2px; border:1px solid #f0f0f0; }
+#wp-calendar caption{ background:transparent; font-weight:normal; padding:3px 0px 7px 0px; color:#333; }
+#wp-calendar #today{ background:#f5f5f5; font-weight:normal; }
+
+/* 24. Pagination */
+.pagenavi{ padding:10px 0px 0px 0px; }
+.nextprev a{ padding:7px 0px; }
+
+/* 25. Footer */
+#footer{ background:#ddd; background-image:url(../images/bg.jpg); background-repeat:repeat-x; width:960px; margin:10px auto; padding:10px 10px 5px 10px; font-size:11px; box-shadow:0px 0px 5px #bbb; -moz-box-shadow:0px 0px 5px #bbb; -webkit-box-shadow:0px 0px 5px #bbb; }
+#footer h3{ width:220px; margin:0px 0px 5px 0px; padding:0px 0px 2px 0px; font-size:1.1em; font-weight:normal; border-bottom:1px solid #e6e6e6; }
+#footer ul{ display:block; float:left; }
+#footer ul li{ background:url(../images/bullet.gif) no-repeat 0px 8px; padding:0px 0px 4px 7px; }
+#bottom{ width:980px; margin:0px auto 10px auto; font-size:11px; text-align:center; }
+.footerwidget{ width:220px; padding:5px 10px; }

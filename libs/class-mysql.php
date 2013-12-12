@@ -83,7 +83,7 @@ class mysql {
 
 		if ( !$this->dbh ) {
 			$this->bail( sprintf( "<h1>Kesalahan membangun koneksi database</h1>
-			<p>Ini berarti bahwa username dan password informasi dalam file <code>iconfig.php</code> Anda tidak benar atau kami tidak dapat menghubungi server database di <code>%s</code>. Ini bisa berarti database server host Anda sedang down</p>
+			<p>Ini berarti bahwa username dan password informasi dalam file <code>config.php</code> Anda tidak benar atau kami tidak dapat menghubungi server database di <code>%s</code>. Ini bisa berarti database server host Anda sedang down</p>
 			<ul>
 				<li>Apakah Anda yakin Anda memiliki username dan password yang benar?</li>
 				<li>Apakah Anda yakin bahwa Anda telah mengetik nama host yang benar?</li>
@@ -109,7 +109,7 @@ class mysql {
 			<li>Apakah Anda yakin itu ada?</li>
 			<li>Pastikan file <code>config.php</code> dihapus pada saat melakukkan instalasi?</li>
 			<li>Apakah <code>%2$s</code> memiliki izin untuk menggunakan database <code>%1$s</code>?</li>
-			<li>Pada sebagian sistem nama database Anda diawali dengan nama pengguna Anda, sehingga akan menjadi seperti<code>username_%1$s</code>. Mungkinkah itu masalahnya?</li>
+			<li>Pada sebagian sistem nama database Anda diawali dengan nama pengguna Anda, sehingga akan menjadi seperti <code>username_%1$s</code>. Mungkinkah itu masalahnya?</li>
 			</ul>
 			<p>Jika Anda tidak tahu cara mengatur database <strong>Anda harus menghubungi host Anda</strong>.</p>', $db, $this->dbuser ), 'db_select_fail' );
 			return;
